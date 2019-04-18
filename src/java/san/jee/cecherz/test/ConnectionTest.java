@@ -9,14 +9,12 @@ import java.util.Properties;
 
 public class ConnectionTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        Class.forName("org.postgresql.Driver");
-        String url = "jdbc:postgresql://localhost/jee_db";
-        Properties p = new Properties();
-        p.setProperty("user", "cecherz");
-        p.setProperty("password", "jee");
-        p.setProperty("ssl", "false");
+        Class.forName("com.mysql.cj.jdbc.Driver");
 
-        Connection c = DriverManager.getConnection(url, p);
+        Connection c = DriverManager.getConnection(
+                "jdbc:mysql://localhost:3306/test?useSSL=false&serverTimezone=UTC",
+                "root",
+                "Pangeon66#");
         Statement s = c.createStatement();
         String q = "SELECT * FROM users;";
         ResultSet rs = s.executeQuery(q);
