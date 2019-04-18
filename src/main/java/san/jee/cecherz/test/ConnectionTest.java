@@ -19,12 +19,12 @@ public class ConnectionTest {
         String q = "SELECT * FROM users;";
         ResultSet rs = s.executeQuery(q);
 
-        String email = null;
         String name = null;
+        String email = null;
         while (rs.next()) {
-            email = rs.getString("email");
             name = rs.getString("name");
-            System.out.println(email + " " + name);
+            email = rs.getString("email");
+            System.out.println(name + " " + email);
         }
         if(s != null) s.close();
         if(rs != null) rs.close();
