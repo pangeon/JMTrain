@@ -19,7 +19,7 @@ public class ConnectionProvider {
             try {
                 Context ic = new InitialContext();
                 Context ec = (Context) ic.lookup("java:comp/env");
-                ds = (DataSource) ec.lookup("jdbc/test");
+                ds = (DataSource) ec.lookup("jdbc/JMTrainDB");
             } catch (NamingException e) {
                 e.printStackTrace();
             }

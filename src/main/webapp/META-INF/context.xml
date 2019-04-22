@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Context>
-    <Resource name="jdbc/test"
+    <Resource name="jdbc/JMTrainDB"
               auth="Container"
               type="javax.sql.DataSource"
               initialSize="10"
@@ -10,5 +10,5 @@
               username="root"
               password="Pangeon66#"
               driverClassName="com.mysql.cj.jdbc.Driver"
-              url="jdbc:mysql://localhost:3306/test?useSSL=false&amp;serverTimezone=UTC" />
+              url="jdbc:mysql://localhost:3306/JMTrainDB?useSSL=false&amp;serverTimezone=UTC" />
 </Context>
