@@ -28,26 +28,26 @@ public class TestConnectionServlet extends HttpServlet {
             resp.setCharacterEncoding("UTF-8");
             resp.setContentType("text/html");
             PrintWriter p = resp.getWriter();
-            p.print("<html>");
-                p.print("<head>");
-                    p.print("<title>Profile</title>");
-                    p.print("<meta charset=\"UTF-8\" \\>");
-                    p.print("<link rel=\"stylesheet\" href=\"css/main.css\">");
-                p.print("</head>");
-                p.print("<body>");
-                    p.print("<h1>Profile użytkowników</h1>");
-                    p.print("<table>");
+            p.println("<html>");
+                p.println("<head>");
+                    p.println("<title>Profile</title>");
+                    p.println("<meta charset=\"UTF-8\" \\>");
+                    p.println("<link rel=\"stylesheet\" href=\"resources/css/main.css\">");
+                p.println("</head>");
+                p.println("<body>");
+                    p.println("<h1>Profile użytkowników</h1>");
+                    p.println("<table>");
                     while (rs.next()) {
-                        p.print("<tr>");
-                            p.print("<td>id: " + rs.getInt("id") + "</td>");
-                            p.print("<td>email: " + rs.getString("email") + "</td>");
-                            p.print("<td>password: " + rs.getString("password") + "</td>");
-                            p.print("<td>role: " + rs.getString("role") + "</td>");
-                        p.print("</tr>");
+                        p.println("<tr>");
+                            p.println("<td>id: " + rs.getInt("id") + "</td>");
+                            p.println("<td>email: " + rs.getString("email") + "</td>");
+                            p.println("<td>password: " + rs.getString("password") + "</td>");
+                            p.println("<td>role: " + rs.getString("role") + "</td>");
+                        p.println("</tr>");
                     }
-                    p.print("</table>");
-                p.print("</body>");
-            p.print("</html>");
+                    p.println("</table>");
+                p.println("</body>");
+            p.println("</html>");
         } catch (SQLException e) {
             req.getRequestDispatcher("error.jsp").forward(req, resp);
             e.printStackTrace();
