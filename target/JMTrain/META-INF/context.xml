@@ -11,4 +11,13 @@
               password="Pangeon66#"
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/JMTrainDB?useSSL=false&amp;serverTimezone=UTC" />
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           dataSourceName="jdbc/JMTrainDB"
+           userTable="Profiles"
+           userNameCol="email"
+           userCredCol="password"
+           userRoleTable="Profiles"
+           roleNameCol="role"
+           localDataSource="true"
+    />
 </Context>

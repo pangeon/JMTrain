@@ -1,5 +1,7 @@
 package san.jee.cecherz.model;
 
+import san.jee.cecherz.dao.exception.UnknownRoleException;
+
 import java.math.BigInteger;
 import java.util.Objects;
 
@@ -7,71 +9,60 @@ public class Profiles {
     private BigInteger id;
     private String email;
     private String password;
-    private String roleName;
-    private enum role {
-        admin, trainer, attendee
-    }
+    private Role role;
 
-    public Profiles(BigInteger id, String email, String password, String roleName) {
+    public Profiles() {};
+
+    public Profiles(Profiles profile) {
         this.id = id;
         this.email = email;
         this.password = password;
-
-        setRoleName(roleName);
-        this.roleName = roleName;
-    }
-
-    private void setRoleName(String choiceRole) {
-        switch (choiceRole) {
-            case "admin":
-                roleName = role.admin.name();
-                break;
-            case "trainer":
-                roleName = role.trainer.name();
-                break;
-            case "attendee":
-                roleName = role.attendee.name();
-                break;
-            default:
-                roleName = "";
-                break;
-        }
+        this.role = role;
     }
     public BigInteger getId() {
         return id;
     }
-
     public void setId(BigInteger id) {
         this.id = id;
     }
-
     public String getEmail() {
         return email;
     }
-
     public void setEmail(String email) {
         this.email = email;
     }
-
     public String getPassword() {
         return password;
     }
-
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getRoleName() {
-        return roleName;
+    public void setRole(Role roleName) throws UnknownRoleException {
+        switch (roleName.name()) {
+            case "admin":
+                role = Role.admin;
+                break;
+            case "trainer":
+                role = Role.trainer;
+                break;
+            case "attendee":
+                role = Role.attendee;
+                break;
+            default:
+                role = null;
+                throw new UnknownRoleException();
+        }
     }
-
+    public String getRole() {
+        return role.name();
+    }
     @Override
     public String toString() {
         return "Profiles{" +
                 "id=" + id +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
-                ", roleName='" + roleName + '\'' +
+                ", role=" + role +
                 '}';
     }
     @Override
@@ -79,14 +70,13 @@ public class Profiles {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Profiles profiles = (Profiles) o;
-        return id.equals(profiles.id) &&
-                email.equals(profiles.email) &&
-                password.equals(profiles.password) &&
-                roleName.equals(profiles.roleName);
+        return Objects.equals(id, profiles.id) &&
+                Objects.equals(email, profiles.email) &&
+                Objects.equals(password, profiles.password) &&
+                role == profiles.role;
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, roleName);
+        return Objects.hash(id, email, password, role);
     }
-
 }

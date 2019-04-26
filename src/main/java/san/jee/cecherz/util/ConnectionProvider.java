@@ -14,7 +14,7 @@ public class ConnectionProvider {
         return getDSInstance().getConnection();
     }
 
-    private static DataSource getDSInstance() {
+    public static DataSource getDSInstance() {
         if (ds == null) {
             try {
                 Context ic = new InitialContext();
