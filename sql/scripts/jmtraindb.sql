@@ -13,15 +13,15 @@ USE JMTrainDB;
 # | role      | enum('admin','trainer','attendee') | NO   |     | NULL              |                   |
 # +-----------+------------------------------------+------+-----+-------------------+-------------------+
 CREATE TABLE Profiles(
-    id 		 	  BIGINT unsigned  	NOT NULL AUTO_INCREMENT,
+    id 		 	BIGINT unsigned  		NOT NULL AUTO_INCREMENT,
     email 	 	VARCHAR(45) 	 	 	NOT NULL UNIQUE,
-    password 	VARCHAR(60) 	 	 	NOT NULL,
-    ip        INT(4) unsigned   NOT NULL,
-    token     VARCHAR(45)       UNIQUE,
-    regstamp  TIMESTAMP         NOT NULL DEFAULT now(),
-    confstamp TIMESTAMP         DEFAULT NULL,
-    role 	 	  ENUM('admin', 'trainer', 'attendee')
-      NOT NULL,
+    password 		VARCHAR(60) 	 	 	NOT NULL,
+    ip        		INT(4) unsigned   		NOT NULL,
+    token     		VARCHAR(45)       		UNIQUE,
+    regstamp  		TIMESTAMP         		NOT NULL DEFAULT now(),
+    confstamp 		TIMESTAMP         		DEFAULT NULL,
+    role 	 	ENUM('admin', 'trainer', 'attendee')
+      			NOT NULL,
 			PRIMARY KEY (id)
 );
 #+----------+---------------------+------+-----+---------+----------------+
