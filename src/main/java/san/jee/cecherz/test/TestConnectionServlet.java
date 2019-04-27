@@ -42,6 +42,10 @@ public class TestConnectionServlet extends HttpServlet {
                             p.println("<td>id: " + rs.getInt("id") + "</td>");
                             p.println("<td>email: " + rs.getString("email") + "</td>");
                             p.println("<td>password: " + rs.getString("password") + "</td>");
+                            p.println("<td>ip: " + rs.getInt("ip") + "</td>");
+                            p.println("<td>token: " + rs.getString("token") + "</td>");
+                            p.println("<td>regstamp: " + rs.getTimestamp("regstamp") + "</td>");
+                            p.println("<td>confstamp: " + rs.getTimestamp("confstamp") + "</td>");
                             p.println("<td>role: " + rs.getString("role") + "</td>");
                         p.println("</tr>");
                     }

@@ -1,19 +1,27 @@
 CREATE DATABASE JMTrainDB;
 USE JMTrainDB;
-#+----------+------------------------------------+------+-----+---------+----------------+
-#| Field    | Type                               | Null | Key | Default | Extra          |
-#+----------+------------------------------------+------+-----+---------+----------------+
-#| id       | bigint(20) unsigned                | NO   | PRI | NULL    | auto_increment |
-#| email    | varchar(45)                        | NO   | UNI | NULL    |                |
-#| password | varchar(60)                        | NO   |     | NULL    |                |
-#| role     | enum('admin','trainer','attendee') | NO   |     | NULL    |                |
-#+----------+------------------------------------+------+-----+---------+----------------+
+# +-----------+------------------------------------+------+-----+-------------------+-------------------+
+# | Field     | Type                               | Null | Key | Default           | Extra             |
+# +-----------+------------------------------------+------+-----+-------------------+-------------------+
+# | id        | bigint(20) unsigned                | NO   | PRI | NULL              | auto_increment    |
+# | email     | varchar(45)                        | NO   | UNI | NULL              |                   |
+# | password  | varchar(60)                        | NO   |     | NULL              |                   |
+# | ip        | int(4) unsigned                    | NO   |     | NULL              |                   |
+# | token     | varchar(45)                        | YES  | UNI | NULL              |                   |
+# | regstamp  | timestamp                          | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
+# | confstamp | timestamp                          | YES  |     | NULL              |                   |
+# | role      | enum('admin','trainer','attendee') | NO   |     | NULL              |                   |
+# +-----------+------------------------------------+------+-----+-------------------+-------------------+
 CREATE TABLE Profiles(
-    id 		 	BIGINT unsigned  	 	NOT NULL AUTO_INCREMENT,
+    id 		 	  BIGINT unsigned  	NOT NULL AUTO_INCREMENT,
     email 	 	VARCHAR(45) 	 	 	NOT NULL UNIQUE,
-    password 		VARCHAR(60) 	 	 	NOT NULL,
-    role 	 	ENUM('admin', 'trainer', 'attendee') 
-							NOT NULL,
+    password 	VARCHAR(60) 	 	 	NOT NULL,
+    ip        INT(4) unsigned   NOT NULL,
+    token     VARCHAR(45)       UNIQUE,
+    regstamp  TIMESTAMP         NOT NULL DEFAULT now(),
+    confstamp TIMESTAMP         DEFAULT NULL,
+    role 	 	  ENUM('admin', 'trainer', 'attendee')
+      NOT NULL,
 			PRIMARY KEY (id)
 );
 #+----------+---------------------+------+-----+---------+----------------+

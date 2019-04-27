@@ -5,12 +5,11 @@
 <body>
 <h2>Witaj na stronie testowej !</h2>
 <h3>Aplikacja jest w budowie</h3>
-Twoja przeglądarka: ${header['user-agent'] }
-<a href="TestConnectionServlet">TestConnectionServlet</a>
-<a href="start.jsp">Start</a>
-<% for(int i=0; i<5; i++) { %>
-<p>Paragraf numer <%= i %></p>
-<% } %>
-
+<p>Twoja przeglądarka: ${header['user-agent'] }</p>
+<p>Twój adres IP: <%= request.getRemoteAddr() %></p>
+<ul>
+    <li><a href="TestConnectionServlet">TestConnectionServlet</a></li>
+    <li><a href="start.jsp">Start</a></li>
+</ul>
 </body>
 </html>

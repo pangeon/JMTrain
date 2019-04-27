@@ -3,6 +3,7 @@ package san.jee.cecherz.controller;
 import san.jee.cecherz.dao.exception.UnknownRoleException;
 import san.jee.cecherz.model.Role;
 import san.jee.cecherz.service.ProfileService;
+import san.jee.cecherz.util.TokenProvider;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,13 +26,16 @@ public class RegisterController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
+        String ip = req.getRemoteAddr();
         ProfileService ps = new ProfileService();
+        String token = new TokenProvider().getToken();
         try {
-            ps.addProfile(email, password, Role.attendee);
+            ps.addProfile(email, password, Role.attendee, ip, token);
             System.out.println("Dodano użytkownika do bazy");
         } catch (UnknownRoleException e) {
             e.printStackTrace();
         }
         resp.sendRedirect(req.getContextPath() + "/");
+
     }
 }

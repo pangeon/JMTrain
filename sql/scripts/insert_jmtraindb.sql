@@ -1,23 +1,23 @@
-INSERT INTO Profiles (email, password, role) VALUES (
-	'agnieszka.lasota1@vp.pl', 'laska37', 'attendee'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+	'agnieszka.lasota2@vp.pl', 'laska37', 'attendee', INET_ATON('10.1.220.76')
 );
-INSERT INTO Profiles (email, password, role) VALUES (
-    'kamil.cecherz@gmail.com', 'Alfaromeo88a', 'admin'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+    'kamil.cecherz@gmail.com', 'Alfaromeo88a', 'admin', INET_ATON('15.10.221.16')
 );
-INSERT INTO Profiles (email, password, role) VALUES (
-    'bed46@wp.pl', 'Zaradny33', 'trainer'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+    'bed46@wp.pl', 'Zaradny33', 'trainer', INET_ATON('10.1.220.77')
 );
-INSERT INTO Profiles (email, password, role) VALUES (
-    'wolnygosc@interia.pl', 'adamos88', 'trainer'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+    'wolnygosc@interia.pl', 'adamos88', 'trainer', INET_ATON('10.19.220.76')
 );
-INSERT INTO Profiles (email, password, role) VALUES (
-    'a.kowal16@tlen.pl', 'DaS3Ek#', 'attendee'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+    'a.kowal16@tlen.pl', 'DaS3Ek#', 'attendee', INET_ATON('100.10.220.76')
 );
-INSERT INTO Profiles (email, password, role) VALUES (
-    'radekignasiak13@onet.pl', 'OleniuniaMoja', 'attendee'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+    'radekignasiak13@onet.pl', 'OleniuniaMoja', 'attendee', INET_ATON('108.19.30.76')
 );
-INSERT INTO Profiles (email, password, role) VALUES (
-    'm.wlazlak@wsparciespoleczne.pl', 'W44#00Abc', 'attendee'
+INSERT INTO Profiles (email, password, role, ip) VALUES (
+    'm.wlazlak@wsparciespoleczne.pl', 'W44#00Abc', 'attendee', INET_ATON('34.22.22.1')
 );
 INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
 	1, 'Agnieszka', 'Lasota', '+48 609 383 855', 'Ksawerów', '95-054', 'Wschodnia 26'

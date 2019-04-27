@@ -14,8 +14,8 @@ import java.util.List;
 public class ProfilesRunner implements ProfilesFactory {
 
     private static final String CREATE_PROFILE =
-            "INSERT INTO Profiles(email, password, role) " +
-                    "VALUES(:email, :password, :role);";
+            "INSERT INTO Profiles(email, password, role, ip, token) " +
+                          "VALUES(:email, :password, :role, INET_ATON(:ip), :token);";
 
     private NamedParameterJdbcTemplate template;
 
