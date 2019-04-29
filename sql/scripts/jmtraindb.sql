@@ -65,8 +65,7 @@ CREATE TABLE Courses(
     end_date   	TIMESTAMP		 	 	NOT NULL,
     describtion TEXT,
     max_attende SMALLINT,
-			PRIMARY KEY(id),
-                	FOREIGN KEY (trainer) 		REFERENCES Profiles(id)
+			    PRIMARY KEY(id)
 );
 #+--------+---------------------+------+-----+---------+----------------+
 #| Field  | Type                | Null | Key | Default | Extra          |

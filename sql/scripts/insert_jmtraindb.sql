@@ -40,24 +40,21 @@ INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VAL
 INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
 	7, 'Małgorzata', 'Wlaźlak', '+48 796 141 420', 'Warszawa', '02-321', 'Aleje Jerozolimskie 107a/3'
 );
-INSERT INTO Courses (trainer, title, start_date, end_date, describtion, max_attende) VALUES (
-	3,
+INSERT INTO Courses (title, start_date, end_date, describtion, max_attende) VALUES (
     'Nowoczesne aplikacje w Java EE',
     '2019-05-20 14:30:00',
     '2019-07-20 16:00:00',
     'Tworzenie aplikacji z wykorzystaniem JDBC, Servletów, MYSQL, JSP',
     12
 );
-INSERT INTO Courses (trainer, title, start_date, end_date, describtion, max_attende) VALUES (
-	3,
+INSERT INTO Courses (title, start_date, end_date, describtion, max_attende) VALUES (
     'Podstawy HTML I CSS',
     '2019-05-20 18:30:00',
     '2019-05-25 18:30:00',
     'Nauka tworzenia stron WWW od podstaw, FTP',
     30
 );
-INSERT INTO Courses (trainer, title, start_date, end_date, describtion, max_attende) VALUES (
-	4,
+INSERT INTO Courses (title, start_date, end_date, describtion, max_attende) VALUES (
     'Analiza danych tekstowych i języka naturalnego (Python)',
     '2019-07-10 12:30:00',
     '2019-07-13 17:00:00',

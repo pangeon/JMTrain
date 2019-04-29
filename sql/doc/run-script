@@ -1,3 +1,4 @@
 source /home/cecherz/IdeaProjects/JMTrain/sql/scripts/jmtraindb.sql
 source /home/cecherz/IdeaProjects/JMTrain/sql/scripts/insert_jmtraindb.sql
 source /home/cecherz/IdeaProjects/JMTrain/sql/scripts/show.sql
+source /home/cecherz/IdeaProjects/JMTrain/sql/scripts/delete_jmtrain.sql
