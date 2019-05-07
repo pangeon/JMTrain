@@ -20,14 +20,14 @@ public class Profiles {
     public Profiles() {};
 
     public Profiles(Profiles profile) {
-        this.id = id;
-        this.email = email;
-        this.password = password;
-        this.ip = ip;
-        this.token = token;
-        this.reqstamp = reqstamp;
-        this.confstamp = confstamp;
-        this.role = role;
+        this.id = profile.id;
+        this.email = profile.email;
+        this.password = profile.password;
+        this.ip = profile.ip;
+        this.token = profile.token;
+        this.reqstamp = profile.reqstamp;
+        this.confstamp = profile.confstamp;
+        this.role = profile.role;
     }
     public BigInteger getId() {
         return id;

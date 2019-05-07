@@ -7,6 +7,7 @@
 <h3>Aplikacja jest w budowie</h3>
 <p>Twoja przeglądarka: ${header['user-agent'] }</p>
 <p>Twój adres IP: <%= request.getRemoteAddr() %></p>
+<p>Dane sesji: <%= request.getSession().getAttribute("email") %></p>
 <ul>
     <li><a href="TestConnectionServlet">TestConnectionServlet</a></li>
     <li><a href="start.jsp">Start</a></li>

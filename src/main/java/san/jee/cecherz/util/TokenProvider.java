@@ -8,7 +8,7 @@ public class TokenProvider {
         SecureRandom random = new SecureRandom();
         byte bytes[] = new byte[20];
         random.nextBytes(bytes);
-        token = bytes.toString().substring(3, 11);
+        token = bytes.toString().substring(3, 10);
     }
     public String getToken() {
         return token;

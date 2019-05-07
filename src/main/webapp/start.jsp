@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,7 +26,14 @@
                         <li><a href="#">Nasi Trenerzy</a></li>
                         <li><a href="#">Współpraca</a></li>
                         <li><a href="#">Kontakt</a></li>
-                        <li><a href="login.jsp">Logowanie</a></li>
+                        <c:choose>
+                            <c:when test="${not empty sessionScope.email}">
+                                <li><a href="logout">Wyloguj się</a></li>
+                            </c:when>
+                            <c:otherwise>
+                                <li><a href="login">Logowanie</a></li>
+                            </c:otherwise>
+                        </c:choose>
                     </ul>
                 </div>
             </div>

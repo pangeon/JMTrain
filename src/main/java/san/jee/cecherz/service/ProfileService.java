@@ -6,6 +6,8 @@ import san.jee.cecherz.dao.profiles.ProfilesFactory;
 import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.model.Role;
 
+import java.math.BigInteger;
+
 public class ProfileService {
     /*
     addProfile() - odpowiedzialna za utworzenie obiektu klasy Profiles i zapisanie odpowiednich danych w bazie.
@@ -21,5 +23,17 @@ public class ProfileService {
         Factory factory = Factory.getFactory();
         ProfilesFactory profilesFactory = factory.getProfilesFactory();
         profilesFactory.create(profile);
+    }
+    public Profiles getProfileById(BigInteger id) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory profilesFactory = factory.getProfilesFactory();
+        Profiles profile = profilesFactory.read(id);
+        return profile;
+    }
+    public Profiles getProfileByEmail(String email) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory profilesFactory = factory.getProfilesFactory();
+        Profiles profile = profilesFactory.getProfilesByEmail(email);
+        return profile;
     }
 }

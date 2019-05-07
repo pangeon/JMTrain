@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ProfilesFactory extends GenericFactory<Profiles, BigInteger> {
     List<Profiles> getAll();
+    Profiles getProfilesByEmail(String email);
 }
