@@ -1,4 +1,4 @@
-package san.jee.cecherz.controller;
+package san.jee.cecherz.controller.security;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

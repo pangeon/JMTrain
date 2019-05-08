@@ -1,4 +1,4 @@
-package san.jee.cecherz.controller;
+package san.jee.cecherz.controller.security;
 
 import san.jee.cecherz.dao.exception.UnknownRoleException;
 import san.jee.cecherz.model.Role;

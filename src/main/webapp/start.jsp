@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -29,6 +30,7 @@
                         <c:choose>
                             <c:when test="${not empty sessionScope.email}">
                                 <li><a href="logout">Wyloguj się</a></li>
+                                <li><a href="courses">Lista kursów</a></li>
                             </c:when>
                             <c:otherwise>
                                 <li><a href="login">Logowanie</a></li>
@@ -41,7 +43,7 @@
         <div class="container">
             <div class="row bs-callout bs-callout-primary">
                 <div class="col col-md-12 col-sm-12">
-                    <h1>CZEGO NAUCZYSZ SIĘ NA KURSIE?</h1>
+                    <h1>CZEGO NAUCZYSZ SIĘ U NAS?</h1>
                     <p>Czy wiesz, że mamy największe doświadczenie w nauczaniu Javy
                         wśród akademii programowania w Polsce? Dzięki temu
                         wypracowaliśmy taką sekwencję zajęć, by kompleksowo
@@ -51,8 +53,40 @@
                         realne potrzeby.
                     </p>
                 </div>
+                <div class="col col-md-12 col-sm-12">
+                    <c:if test="${not empty requestScope.courses}">
+                        <h1>OFEROWANE SZKOLENIA</h1>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="info text-center" scope="col">Nazwa szkolenia</th>
+                                <th class="info text-center" scope="col">Data rozpoczęcia</th>
+                                <th class="info text-center" scope="col">Data zakończenia</th>
+                                <th class="info text-center" scope="col">Opis</th>
+                                <th class="info text-center" scope="col">Max uczestników</th>
+                                <th class="info text-center" scope="col">#</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="course" items="${requestScope.courses}">
+                                <tr>
+                                    <td><c:out value="${course.title}" /></td>
+                                    <td><fmt:formatDate value="${course.start_date}" type = "both"
+                                                        dateStyle = "short" timeStyle = "short" /></td>
+                                    <td><fmt:formatDate value="${course.end_date}" type = "both"
+                                                        dateStyle = "short" timeStyle = "short" /></td>
+                                    <td><c:out value="${course.describtion}" /></td>
+                                    <td><c:out value="${course.max_attende}" /></td>
+                                    <td><button type="button">Zapisz</button></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
+                </div>
             </div>
         </div>
+
         <footer class="footer">
             <div class="container">
                 <p class="navbar-text">JMTrain v. 0.1 test - developed by <a href="http://cecherz.pl">Kamil Cecherz</a></p>
