@@ -24,7 +24,7 @@ public class LoginFilter implements Filter {
      */
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest http_req = (HttpServletRequest) req;
-        if(http_req.getUserPrincipal() != null && http_req.getSession().getAttribute("email") == null) {
+        if(http_req.getUserPrincipal() != null && http_req.getSession().getAttribute("user") == null) {
             saveProfileInSession(http_req);
         }
         chain.doFilter(req, resp);
@@ -33,7 +33,8 @@ public class LoginFilter implements Filter {
         ProfileService ps = new ProfileService();
         String email = req.getUserPrincipal().getName();
         Profiles profileByEmail = ps.getProfileByEmail(email);
-        req.getSession(true).setAttribute("email", profileByEmail);
+        req.getSession(true).setAttribute("user", profileByEmail);
+        req.getSession().setMaxInactiveInterval(300);
     }
     public void init(FilterConfig config) throws ServletException {}
     public void destroy() {}

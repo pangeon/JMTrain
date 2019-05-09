@@ -49,4 +49,9 @@
       <el-ignored>false</el-ignored>
     </jsp-property-group>
   </jsp-config>
+
+  <!-- SESSION CONFIG -->
+  <session-config>
+    <session-timeout>5</session-timeout>
+  </session-config>
 </web-app>

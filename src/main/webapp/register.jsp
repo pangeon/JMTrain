@@ -12,7 +12,7 @@
     <body>
         <nav class = "navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                <a href="#" class="navbar-brand">JMTrain</a>
+                <a href="index.jsp" class="navbar-brand">JMTrain</a>
 
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
                     <span class="glyphicon glyphicon-list"></span>

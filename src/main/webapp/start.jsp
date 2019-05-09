@@ -11,10 +11,10 @@
         <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" type="text/css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/css/main-bootstrap.css" type="text/css" rel="stylesheet">
     </head>
-    <body>
+    <body id="sessionClock" onload="timeMin();timeSec()">
         <nav class = "navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                <a href="#" class="navbar-brand">JMTrain</a>
+                <a href="index.jsp" class="navbar-brand">JMTrain</a>
 
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
                     <span class="glyphicon glyphicon-list"></span>
@@ -28,7 +28,7 @@
                         <li><a href="#">Współpraca</a></li>
                         <li><a href="#">Kontakt</a></li>
                         <c:choose>
-                            <c:when test="${not empty sessionScope.email}">
+                            <c:when test="${not empty sessionScope.user}">
                                 <li><a href="logout">Wyloguj się</a></li>
                                 <li><a href="courses">Lista kursów</a></li>
                             </c:when>
@@ -89,9 +89,23 @@
 
         <footer class="footer">
             <div class="container">
-                <p class="navbar-text">JMTrain v. 0.1 test - developed by <a href="http://cecherz.pl">Kamil Cecherz</a></p>
+                <p class="navbar-text pull-left">JMTrain v. 0.1 test - developed by <a href="http://cecherz.pl">Kamil Cecherz</a></p>
+                <c:if test="${not empty sessionScope.user}">
+                    <p class="navbar-text pull-right">
+                        Zalogowany jako:
+                        <span style="font-weight: bolder">${sessionScope.user.email}</span> |
+                        <a href="#">Panel użytkownika</a>
+                    </p>
+                    <p class="navbar-text pull-right">
+                        Czas sesji:
+                        <span id="min">5</span> :
+                        <span id="sec">60</span>
+                    </p>
+                </c:if>
+
             </div>
         </footer>
+        <script src="${pageContext.request.contextPath}/resources/js/sessionCounter.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/jquery-1.11.2.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/jquery-migrate-1.2.1.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/bootstrap.js"></script>

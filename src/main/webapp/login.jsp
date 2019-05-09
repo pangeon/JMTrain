@@ -12,7 +12,7 @@
     <body>
         <nav class = "navbar navbar-inverse navbar-fixed-top">
             <div class="container">
-                <a href="#" class="navbar-brand">JMTrain</a>
+                <a href="index.jsp" class="navbar-brand">JMTrain</a>
 
                 <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
                     <span class="glyphicon glyphicon-list"></span>
@@ -35,8 +35,8 @@
             <div class="col-sm-6 col-md-4 col-md-offset-4">
                 <form class="form-signin" action="j_security_check" method="post">
                     <h2 class="form-signin-heading">Logowanie</h2>
-                    <input name="j_username" type="text" class="form-control" placeholder="Nazwa uzytkownika" required autofocus>
-                    <input name="j_password" type="password" class="form-control" placeholder="Hasło" required>
+                    <input name="j_username" type="text" class="form-control" placeholder="Podaj e-mail" required autofocus>
+                    <input name="j_password" type="password" class="form-control" placeholder="Podaj hasło" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
                     <a href="register.jsp">Zarejestruj</a>
                 </form>
