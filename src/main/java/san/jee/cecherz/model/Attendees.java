@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Attendees {
     private BigInteger id;
-    private BigInteger idprof;
+    private Profiles idprof;
     private String name;
     private String surname;
     private String phone;
@@ -15,18 +15,16 @@ public class Attendees {
 
     public Attendees() {};
 
-    public Attendees(BigInteger id, BigInteger idprof, String name,
-                     String surname, String phone, String city,
-                     String postcode, String street)
+    public Attendees(Attendees a)
     {
-        this.id = id;
-        this.idprof = idprof;
-        this.name = name;
-        this.surname = surname;
-        this.phone = phone;
-        this.city = city;
-        this.postcode = postcode;
-        this.street = street;
+        this.id = a.id;
+        this.idprof = a.idprof;
+        this.name = a.name;
+        this.surname = a.surname;
+        this.phone = a.phone;
+        this.city = a.city;
+        this.postcode = a.postcode;
+        this.street = a.street;
     }
     public BigInteger getId() {
         return id;
@@ -36,11 +34,11 @@ public class Attendees {
         this.id = id;
     }
 
-    public BigInteger getIdprof() {
+    public Profiles getIdprof() {
         return idprof;
     }
 
-    public void setIdprof(BigInteger idprof) {
+    public void setIdprof(Profiles idprof) {
         this.idprof = idprof;
     }
 

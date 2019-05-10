@@ -94,7 +94,7 @@
                     <p class="navbar-text pull-right">
                         Zalogowany jako:
                         <span style="font-weight: bolder">${sessionScope.user.email}</span> |
-                        <a href="#">Panel użytkownika</a>
+                        <a href="account">Panel użytkownika</a>
                     </p>
                     <p class="navbar-text pull-right">
                         Czas sesji:

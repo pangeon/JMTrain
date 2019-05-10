@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface AttendeeFactory extends GenericFactory<Attendees, BigInteger>  {
     List<Attendees> getAll();
-    Profiles getProfileByFK(BigInteger ForeignKey);
+    Attendees getProfileInfo(BigInteger FK);
 }

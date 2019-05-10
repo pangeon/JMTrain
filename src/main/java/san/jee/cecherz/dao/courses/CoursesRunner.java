@@ -1,11 +1,8 @@
 package san.jee.cecherz.dao.courses;
 
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import san.jee.cecherz.model.Courses;
-import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.util.ConnectionProvider;
 
 import java.math.BigInteger;
