@@ -28,7 +28,7 @@ CREATE TABLE Profiles(
 #| Field    | Type                | Null | Key | Default | Extra          |
 #+----------+---------------------+------+-----+---------+----------------+
 #| id       | bigint(20) unsigned | NO   | PRI | NULL    | auto_increment |
-#| idprof   | bigint(20) unsigned | NO   | MUL | NULL    |                |
+#| idprof   | bigint(20) unsigned | NO   | UNI | NULL    |                |
 #| name     | varchar(60)         | NO   |     | NULL    |                |
 #| surname  | varchar(60)         | NO   |     | NULL    |                |
 #| phone    | varchar(20)         | NO   | UNI | NULL    |                |
@@ -38,7 +38,7 @@ CREATE TABLE Profiles(
 #+----------+---------------------+------+-----+---------+----------------+ 
 CREATE TABLE Attendees(
     id 		 	BIGINT unsigned  	 	NOT NULL AUTO_INCREMENT,
-    idprof 	 	BIGINT unsigned  	 	NOT NULL,
+    idprof 	 	BIGINT unsigned  	 	NOT NULL UNIQUE,
     name 	 	VARCHAR(60) 	 	 	NOT NULL,
     surname  		VARCHAR(60) 	 	 	NOT NULL,
     phone 	 	VARCHAR(20) 	 	 	NOT NULL UNIQUE,

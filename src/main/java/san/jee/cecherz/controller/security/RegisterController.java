@@ -35,7 +35,7 @@ public class RegisterController extends HttpServlet {
         } catch (UnknownRoleException e) {
             e.printStackTrace();
         }
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/start.jsp");
 
     }
 }

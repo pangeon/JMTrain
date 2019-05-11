@@ -40,6 +40,7 @@ public class AttendeesController extends HttpServlet {
         } else {
             resp.sendError(403);
         }
+        req.setAttribute("phone", phone);
 
     }
 
