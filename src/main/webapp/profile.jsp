@@ -43,28 +43,61 @@
         <div class="container">
             <div class="row bs-callout bs-callout-primary">
                 <div class="col col-md-12 col-sm-12">
-                    <h1>DANE PROFILOWE</h1>
-                    <h3 style="text-align: center">
-                        Uzupełnij dane profilowe aby zapisać się na szkolenie.
-                    </h3>
-                    <form class="form-signin" method="post" action="account">
-                        <h4>Wprowadź dane profilowe:</h4>
-                        <input name="name" type="text" class="form-control" placeholder="Imię"
-                               required autofocus />
-                        <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
-                               required autofocus />
-                        <input name="phone" type="tel" class="form-control" placeholder="Telefon"
-                               required autofocus />
-                        <input name="city" type="text" class="form-control" placeholder="Miasto"
-                               required autofocus />
-                        <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
-                               autofocus />
-                        <input name="street" type="text" class="form-control" placeholder="Ulica"
-                               required autofocus />
-                        <input class="btn btn-lg btn-primary btn-block" type="submit"
-                               value="Zatwierdź" />
-                    </form>
+                    <c:if test="${sessionScope.user.role == 'attendee'}">
+                        <h1>DANE PROFILOWE</h1>
+                        <h3 style="text-align: center">
+                            Uzupełnij dane profilowe aby zapisać się na szkolenie.
+                        </h3>
+                        <form class="form-signin" method="post" action="account">
+                            <h4>Wprowadź dane profilowe:</h4>
+                            <input name="name" type="text" class="form-control" placeholder="Imię"
+                                   required autofocus />
+                            <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
+                                   required autofocus />
+                            <input name="phone" type="tel" class="form-control" placeholder="Telefon"
+                                   required autofocus />
+                            <input name="city" type="text" class="form-control" placeholder="Miasto"
+                                   required autofocus />
+                            <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
+                                   autofocus />
+                            <input name="street" type="text" class="form-control" placeholder="Ulica"
+                                   required autofocus />
+                            <input class="btn btn-lg btn-primary btn-block" type="submit"
+                                   value="Zatwierdź" />
+                        </form>
+                    </c:if>
+                    <c:if test="${sessionScope.user.role == 'admin'}">
+                        <h1>DANE PROFILOWE UŻYTKOWNIKÓW</h1>
+                        <h3 style="text-align: center">
+                            Dane wszystkich użytkowników - obowiązuje unijna derektywa RODO*
+                        </h3>
+                        <table class="table table-bordered">
+                            <thead>
+                            <tr>
+                                <th class="info text-center" scope="col">Imię</th>
+                                <th class="info text-center" scope="col">Nazwisko</th>
+                                <th class="info text-center" scope="col">Telefon</th>
+                                <th class="info text-center" scope="col">Miasto</th>
+                                <th class="info text-center" scope="col">Kod pocztowy</th>
+                                <th class="info text-center" scope="col">Ulica</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <c:forEach var="profile" items="${requestScope.profiles}">
+                                <tr>
+                                    <td><c:out value="${profile.name}" /></td>
+                                    <td><c:out value="${profile.surname}" /></td>
+                                    <td><c:out value="${profile.phone}" /></td>
+                                    <td><c:out value="${profile.city}" /></td>
+                                    <td><c:out value="${profile.postcode}" /></td>
+                                    <td><c:out value="${profile.street}" /></td>
+                                </tr>
+                            </c:forEach>
+                            </tbody>
+                        </table>
+                    </c:if>
                 </div>
+
             </div>
         </div>
 

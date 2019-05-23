@@ -2,7 +2,7 @@ WYMAGANIA:
 -------------------------
 1.Przestestowano w określonych warunkach: 
 -IntelliJ IDEA wersja enterprise.
--System operacyjny Linux Fedora 29, Linux Mint 19.1
+-System operacyjny Linux Fedora 29, Linux Mint 19.1, WINDOWS 10
 -javac 11.0.1
 
 Wdrożenie aplikacji jest możliwe z dowolnego IDE, przy wybraniu preferowanej przez siebie wersji jdk oraz systemu operacyjnego.
@@ -10,7 +10,7 @@ Wdrożenie aplikacji jest możliwe z dowolnego IDE, przy wybraniu preferowanej p
 2.Wymagania niezbędne:
 -Zainstalowane JDK
 -Serwer aplikacyjny Tomcat 9
--MySQL Database 8.0.13
+-MySQL Database 8.0.13 / Pakiet XAMPP
 -Maven
 
 3.Maven zadba o pobranie bibliotek:
@@ -28,6 +28,7 @@ Wdrożenie aplikacji jest możliwe z dowolnego IDE, przy wybraniu preferowanej p
 
 URUCHOMIENIE BAZY DANYCH:
 ------------------------
+1) LINUX ***
 Poprzez interfejs tekstowy w konsoli:
 mysql -u <nazwa_użytkownika> -p
 Password: <hasło>
@@ -38,6 +39,9 @@ mysql> source <twoja_lokalizacja>/JMTrain/sql/scripts/insert_jmtraindb.sql - pol
 mysql> source <twoja_lokalizacja>/JMTrain/sql/scripts/show.sql - polecenie wyświela zawartość tabel
 mysql> source <twoja_lokalizacja>/JMTrain/delete_jmtrain.sql - polecenie usuwa wszystkie tabele (nie bazę !)
 
+2) WINDOWS 10 ***
+Zainstalowany pakiet XAMPP pozwala na skorzystanie z bazy danych MariaDB. Drobne różnice stwarzają konieczność użycia pliku \JMTrain\sql\scripts\jmtraindb_mdb.sql
+przy tworzeniu schematu bazy. Konieczna jest też zmiana kodowania, należy zastąpić plik my.ini (\JMTrain\sql\conf\my.ini) w pakiecie XAMPP (\xampp\mysql\bin)
 
 URUCHOMIENIE APLIKACJI:
 ------------------------
@@ -45,6 +49,7 @@ URUCHOMIENIE APLIKACJI:
 Foldery określają położenie plików "webapps" lub "work/Catalina/localhost" (w zależności od tego czy wysyłamy pliki przy pomocy interfejsu webowego tomcata czy IDE)
 
 2.Aplikacja po wgraniu plików jest dostępna z poziomu przeglądarki WWW pod adresem "http://<Twoje_IP>/JMTrain" (localhost)
+	UWAGA ! Opcja "-Djava.net.preferIPv4Stack=true" (VM Options) wymusza adres IP w wersji IPv4, co jest użyteczne przy testowaniu. 
 
 
 PRAWA AUTORSKIE I ŹRÓDŁA:

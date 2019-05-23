@@ -1,5 +1,6 @@
 package san.jee.cecherz.content;
 
+import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.service.AttendeeService;
 
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.math.BigInteger;
+import java.util.List;
 
 @WebServlet(name = "AttendeesController", value = "/account")
 public class AttendeesController extends HttpServlet {
@@ -17,6 +20,8 @@ public class AttendeesController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         if(req.getUserPrincipal() != null) {
+            saveAttendeesInRequest(req);
+            saveAttendeeInfoInRequest(req);
             req.getRequestDispatcher("profile.jsp").forward(req, resp);
         } else {
             resp.sendError(403);
@@ -40,9 +45,15 @@ public class AttendeesController extends HttpServlet {
         } else {
             resp.sendError(403);
         }
-        req.setAttribute("phone", phone);
-
     }
-
-
+    private void saveAttendeesInRequest(HttpServletRequest req) {
+        AttendeeService as = new AttendeeService();
+        List<Attendees> attendeesList = as.getAllAttendees();
+        req.setAttribute("profiles", attendeesList);
+    }
+    private void saveAttendeeInfoInRequest(HttpServletRequest req) {
+        AttendeeService as = new AttendeeService();
+        Attendees attendee = as.getAttendeeByID(new BigInteger("1"));
+        req.setAttribute("profile_info", attendee);
+    }
 }

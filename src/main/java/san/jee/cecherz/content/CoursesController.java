@@ -19,7 +19,6 @@ public class CoursesController extends HttpServlet {
         saveCoursesInRequest(req);
         req.getRequestDispatcher("start.jsp").forward(req, resp);
     }
-
     private void saveCoursesInRequest(HttpServletRequest req) {
         CoursesService cs = new CoursesService();
         List<Courses> cl = cs.getAllCourses(Comparator.comparing(Courses::getStart_date));
