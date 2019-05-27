@@ -1,0 +1,18 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<footer class="footer">
+    <div class="container">
+        <p class="navbar-text pull-left">JMTrain v. 0.1 test - developed by <a href="http://cecherz.pl">Kamil Cecherz</a></p>
+        <c:if test="${not empty sessionScope.user}">
+            <p class="navbar-text pull-right">
+                Zalogowany jako:
+                <span style="font-weight: bolder">${sessionScope.user.email}</span> |
+                <a href="account">Panel użytkownika</a>
+            </p>
+            <p class="navbar-text pull-right">
+                Czas sesji:
+                <span id="min">5</span> :
+                <span id="sec">60</span>
+            </p>
+        </c:if>
+    </div>
+</footer>

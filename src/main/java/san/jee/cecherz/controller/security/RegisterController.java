@@ -17,7 +17,7 @@ public class RegisterController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        req.getRequestDispatcher("register.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/register.jsp").forward(req, resp);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class RegisterController extends HttpServlet {
         } catch (UnknownRoleException e) {
             e.printStackTrace();
         }
-        resp.sendRedirect(req.getContextPath() + "/start.jsp");
+        resp.sendRedirect(req.getContextPath() + "/");
 
     }
 }

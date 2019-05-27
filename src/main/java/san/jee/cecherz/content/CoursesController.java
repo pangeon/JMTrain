@@ -17,7 +17,7 @@ public class CoursesController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         saveCoursesInRequest(req);
-        req.getRequestDispatcher("start.jsp").forward(req, resp);
+        req.getRequestDispatcher("/WEB-INF/start.jsp").forward(req, resp);
     }
     private void saveCoursesInRequest(HttpServletRequest req) {
         CoursesService cs = new CoursesService();

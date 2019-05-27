@@ -22,7 +22,7 @@ public class AttendeesController extends HttpServlet {
         if(req.getUserPrincipal() != null) {
             saveAttendeesInRequest(req);
             saveAttendeeInfoInRequest(req);
-            req.getRequestDispatcher("profile.jsp").forward(req, resp);
+            req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
         } else {
             resp.sendError(403);
         }
@@ -41,7 +41,7 @@ public class AttendeesController extends HttpServlet {
         if(req.getUserPrincipal() != null) {
             AttendeeService as = new AttendeeService();
             as.addProfileInfo(activeProfile, name, surname, phone, city, postcode, street);
-            resp.sendRedirect(req.getContextPath() + "/");
+            resp.sendRedirect(req.getContextPath() + "/WEB-INF/profile.jsp");
         } else {
             resp.sendError(403);
         }
