@@ -20,7 +20,7 @@
                     <input name="j_username" type="text" class="form-control" placeholder="Podaj e-mail" required autofocus>
                     <input name="j_password" type="password" class="form-control" placeholder="Podaj hasło" required>
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj</button>
-                    <a href="register.jsp">Zarejestruj</a>
+                    <a href="register">Zarejestruj</a>
                 </form>
             </div>
         </div>

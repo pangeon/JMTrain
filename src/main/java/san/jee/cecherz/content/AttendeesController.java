@@ -41,7 +41,7 @@ public class AttendeesController extends HttpServlet {
         if(req.getUserPrincipal() != null) {
             AttendeeService as = new AttendeeService();
             as.addProfileInfo(activeProfile, name, surname, phone, city, postcode, street);
-            resp.sendRedirect(req.getContextPath() + "/WEB-INF/profile.jsp");
+            resp.sendRedirect(req.getContextPath() + "/");
         } else {
             resp.sendError(403);
         }
