@@ -30,47 +30,47 @@
                     <div class="form-group">
                         <input name="name" type="text" class="form-control" placeholder="Imię"
                                data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓa-złżźąęćśóń]+$"
-                               data-bv-regexp-message="Imię nie może zawierać znaków specjalnych."
-                               required autofocus/>
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                               data-bv-regexp-message="Imię z dużej litery bez znaków specjalnych oraz liczb (min 3 znaki)."
+                               required autofocus />
                     </div>
                     <div class="form-group">
                         <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
                                data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓa-złżźąęćśóń]+$"
-                               data-bv-regexp-message="Nazwisko nie może zawierać znaków specjalnych, innych prócz \" -\""
-                        required autofocus />
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                               data-bv-regexp-message="Nazwisko z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
+                               required autofocus />
                     </div>
                     <div class="form-group">
                         <input name="phone" type="tel" class="form-control" placeholder="Telefon"
                                data-bv-regexp="true"
                                data-bv-regexp-regexp="^[0-9\-\+]{9,15}$"
-                               data-bv-regexp-message="Numer telefonu od 9 do 15 znaków."
-                               required autofocus/>
+                               data-bv-regexp-message="Numer telefonu od 9 do 15 znaków. Znaki specjalne +/-"
+                               required autofocus />
                     </div>
                     <div class="form-group">
                         <input name="city" type="text" class="form-control" placeholder="Miasto"
                                data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓa-złżźąęćśóń]+$"
-                               data-bv-regexp-message="Nazwa miasta jest niepoprawna."
-                               required autofocus/>
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{3,30}$"
+                               data-bv-regexp-message="Nazwa miasta pisana dużą literą (min 4 znaki). Możliwy odstęp."
+                               required autofocus />
                     </div>
                     <div class="form-group">
                         <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
                                data-bv-regexp="true"
                                data-bv-regexp-regexp="[0-9]{2}\-[0-9]{3}"
                                data-bv-regexp-message="Format XX-XXX."
-                               autofocus/>
+                               autofocus />
                     </div>
                     <div class="form-group">
                         <input name="street" type="text" class="form-control" placeholder="Ulica"
                                data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓa-złżźąęćśóń0-9 ]+$"
-                               data-bv-regexp-message="Nazwa ulicy jest niepoprawna."
-                               required autofocus/>
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń0-9 /]{3,60}$"
+                               data-bv-regexp-message="Pisane wielką literą (min 4 znaki). Dopuszczalny odstęp i znak \"
+                               required autofocus />
                     </div>
                     <input class="btn btn-lg btn-primary btn-block" type="submit"
-                           value="Zatwierdź"/>
+                           value="Zatwierdź" />
                 </form>
             </c:if>
             <c:if test="${sessionScope.user.role == 'admin'}">
