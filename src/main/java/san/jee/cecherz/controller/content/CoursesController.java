@@ -1,4 +1,4 @@
-package san.jee.cecherz.content;
+package san.jee.cecherz.controller.content;
 
 import san.jee.cecherz.model.Courses;
 import san.jee.cecherz.service.CoursesService;

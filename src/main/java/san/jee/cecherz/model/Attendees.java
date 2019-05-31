@@ -5,13 +5,14 @@ import java.util.Objects;
 
 public class Attendees {
     private BigInteger id;
-    private Profiles idprof;
+    private BigInteger idprof;
     private String name;
     private String surname;
     private String phone;
     private String city;
     private String postcode;
     private String street;
+    private Profiles profiles;
 
     public Attendees() {};
 
@@ -25,6 +26,7 @@ public class Attendees {
         this.city = a.city;
         this.postcode = a.postcode;
         this.street = a.street;
+        this.profiles = a.profiles;
     }
     public BigInteger getId() {
         return id;
@@ -34,11 +36,11 @@ public class Attendees {
         this.id = id;
     }
 
-    public Profiles getIdprof() {
+    public BigInteger getIdprof() {
         return idprof;
     }
 
-    public void setIdprof(Profiles idprof) {
+    public void setIdprof(BigInteger idprof) {
         this.idprof = idprof;
     }
 
@@ -90,6 +92,14 @@ public class Attendees {
         this.street = street;
     }
 
+    public Profiles getProfiles() {
+        return profiles;
+    }
+
+    public void setProfiles(Profiles profiles) {
+        this.profiles = profiles;
+    }
+
     @Override
     public String toString() {
         return "Attendees{" +
@@ -101,24 +111,28 @@ public class Attendees {
                 ", city='" + city + '\'' +
                 ", postcode='" + postcode + '\'' +
                 ", street='" + street + '\'' +
+                ", profiles=" + profiles +
                 '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Attendees attendees = (Attendees) o;
-        return Objects.equals(id, attendees.id) &&
-                Objects.equals(idprof, attendees.idprof) &&
-                Objects.equals(name, attendees.name) &&
-                Objects.equals(surname, attendees.surname) &&
-                Objects.equals(phone, attendees.phone) &&
-                Objects.equals(city, attendees.city) &&
-                Objects.equals(postcode, attendees.postcode) &&
-                Objects.equals(street, attendees.street);
+        return id.equals(attendees.id) &&
+                idprof.equals(attendees.idprof) &&
+                name.equals(attendees.name) &&
+                surname.equals(attendees.surname) &&
+                phone.equals(attendees.phone) &&
+                city.equals(attendees.city) &&
+                postcode.equals(attendees.postcode) &&
+                street.equals(attendees.street) &&
+                profiles.equals(attendees.profiles);
     }
+
     @Override
     public int hashCode() {
-        return Objects.hash(id, idprof, name, surname, phone, city, postcode, street);
+        return Objects.hash(id, idprof, name, surname, phone, city, postcode, street, profiles);
     }
 }

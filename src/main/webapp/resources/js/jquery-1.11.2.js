@@ -6545,7 +6545,7 @@ function setPositiveNumber( elem, value, subtract ) {
 }
 
 function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
-	var i = extra === ( isBorderBox ? "border" : "content" ) ?
+	var i = extra === ( isBorderBox ? "border" : "san.jee.cecherz.controller.security.content" ) ?
 		// If we already have the right measurement, avoid augmentation
 		4 :
 		// Otherwise initialize for horizontal or vertical properties
@@ -6561,7 +6561,7 @@ function augmentWidthOrHeight( elem, name, extra, isBorderBox, styles ) {
 
 		if ( isBorderBox ) {
 			// border-box includes padding, so remove it if we want content
-			if ( extra === "content" ) {
+			if ( extra === "san.jee.cecherz.controller.security.content" ) {
 				val -= jQuery.css( elem, "padding" + cssExpand[ i ], true, styles );
 			}
 
@@ -6619,7 +6619,7 @@ function getWidthOrHeight( elem, name, extra ) {
 		augmentWidthOrHeight(
 			elem,
 			name,
-			extra || ( isBorderBox ? "border" : "content" ),
+			extra || ( isBorderBox ? "border" : "san.jee.cecherz.controller.security.content" ),
 			valueIsBorderBox,
 			styles
 		)

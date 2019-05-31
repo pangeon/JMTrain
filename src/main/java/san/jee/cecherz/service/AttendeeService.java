@@ -24,10 +24,10 @@ public class AttendeeService {
         List<Attendees> attendeesList = af.getAll();
         return attendeesList;
     }
-    public Attendees getAttendeeByID(BigInteger id) {
+    public Attendees getAttendeeByFK(BigInteger id) {
         Factory factory = Factory.getFactory();
         AttendeeFactory attendeeFactory = factory.getAttendeeFactory();
-        Attendees attendee = attendeeFactory.getProfileInfo(id);
+        Attendees attendee = attendeeFactory.read(id);
         return attendee;
     }
     private Attendees createAttendeInfo
@@ -35,7 +35,7 @@ public class AttendeeService {
      String street) {
         Attendees a = new Attendees();
         Profiles pcopy = new Profiles(idprof);
-        a.setIdprof(pcopy);
+        a.setProfiles(pcopy);
         a.setName(name);
         a.setSurname(surname);
         a.setPhone(phone);

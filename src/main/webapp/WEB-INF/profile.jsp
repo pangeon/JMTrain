@@ -20,57 +20,86 @@
 <div class="container">
     <div class="row bs-callout bs-callout-primary">
         <div class="col col-md-12 col-sm-12">
-            <c:if test="${sessionScope.user.role == 'attendee'}">
+            <c:if test="${requestScope.profile_info != null}">
+                <h1>DANE PROFILOWE</h1>
+                <table class="table table-bordered">
+                    <tr>
+                        <td>Imię:</td>
+                        <td>${requestScope.profile_info.name}</td>
+                    </tr>
+                    <tr>
+                        <td>Nazwisko:</td>
+                        <td>${requestScope.profile_info.surname}</td>
+                    </tr>
+                    <tr>
+                        <td>Telefon:</td>
+                        <td>${requestScope.profile_info.phone}</td>
+                    </tr>
+                    <tr>
+                        <td>Ulica:</td>
+                        <td>${requestScope.profile_info.city}</td>
+                    </tr>
+                    <tr>
+                        <td>Kod pocztowy:</td>
+                        <td>${requestScope.profile_info.postcode}</td>
+                    </tr>
+                    <tr>
+                        <td>Ulica:</td>
+                        <td>${requestScope.profile_info.street}</td>
+                    </tr>
+                </table>
+            </c:if>
+            <c:if test="${sessionScope.user.role == 'attendee' && requestScope.profile_info == null}">
                 <h1>DANE PROFILOWE</h1>
                 <h3 style="text-align: center">
                     Uzupełnij dane profilowe aby zapisać się na szkolenie.
                 </h3>
                 <form id="profileForm" class="form-signin" method="post" action="account">
                     <h4>Wprowadź dane profilowe:</h4>
-                    <div class="form-group">
-                        <input name="name" type="text" class="form-control" placeholder="Imię"
-                               data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
-                               data-bv-regexp-message="Imię z dużej litery bez znaków specjalnych oraz liczb (min 3 znaki)."
-                               required autofocus />
-                    </div>
-                    <div class="form-group">
-                        <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
-                               data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
-                               data-bv-regexp-message="Nazwisko z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
-                               required autofocus />
-                    </div>
-                    <div class="form-group">
-                        <input name="phone" type="tel" class="form-control" placeholder="Telefon"
-                               data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[0-9\-\+]{9,15}$"
-                               data-bv-regexp-message="Numer telefonu od 9 do 15 znaków. Znaki specjalne +/-"
-                               required autofocus />
-                    </div>
-                    <div class="form-group">
-                        <input name="city" type="text" class="form-control" placeholder="Miasto"
-                               data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{3,30}$"
-                               data-bv-regexp-message="Nazwa miasta pisana dużą literą (min 4 znaki). Możliwy odstęp."
-                               required autofocus />
-                    </div>
-                    <div class="form-group">
-                        <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
-                               data-bv-regexp="true"
-                               data-bv-regexp-regexp="[0-9]{2}\-[0-9]{3}"
-                               data-bv-regexp-message="Format XX-XXX."
-                               autofocus />
-                    </div>
-                    <div class="form-group">
-                        <input name="street" type="text" class="form-control" placeholder="Ulica"
-                               data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń0-9 /]{3,60}$"
-                               data-bv-regexp-message="Pisane wielką literą (min 4 znaki). Dopuszczalny odstęp i znak \"
-                               required autofocus />
-                    </div>
-                    <input class="btn btn-lg btn-primary btn-block" type="submit"
-                           value="Zatwierdź" />
+                            <div class="form-group">
+                            <input name="name" type="text" class="form-control" placeholder="Imię"
+                                   data-bv-regexp="true"
+                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                                   data-bv-regexp-message="Imię z dużej litery bez znaków specjalnych oraz liczb (min 3 znaki)."
+                                   required autofocus />
+                            </div>
+                            <div class="form-group">
+                            <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
+                                   data-bv-regexp="true"
+                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                                   data-bv-regexp-message="Nazwisko z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
+                                   required autofocus />
+                            </div>
+                            <div class="form-group">
+                            <input name="phone" type="tel" class="form-control" placeholder="Telefon"
+                                   data-bv-regexp="true"
+                                   data-bv-regexp-regexp="^[0-9\-\+]{9,15}$"
+                                   data-bv-regexp-message="Numer telefonu od 9 do 15 znaków. Znaki specjalne +/-"
+                                   required autofocus />
+                            </div>
+                            <div class="form-group">
+                            <input name="city" type="text" class="form-control" placeholder="Miasto"
+                                   data-bv-regexp="true"
+                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{3,30}$"
+                                   data-bv-regexp-message="Nazwa miasta pisana dużą literą (min 4 znaki). Możliwy odstęp."
+                                   required autofocus />
+                            </div>
+                            <div class="form-group">
+                            <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
+                                   data-bv-regexp="true"
+                                   data-bv-regexp-regexp="[0-9]{2}\-[0-9]{3}"
+                                   data-bv-regexp-message="Format XX-XXX."
+                                   autofocus />
+                            </div>
+                            <div class="form-group">
+                            <input name="street" type="text" class="form-control" placeholder="Ulica"
+                                   data-bv-regexp="true"
+                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń0-9 /]{3,60}$"
+                                   data-bv-regexp-message="Pisane wielką literą (min 4 znaki). Dopuszczalny odstęp i znak \"
+                                   required autofocus />
+                            </div>
+                            <input class="btn btn-lg btn-primary btn-block" type="submit"
+                                   value="Zatwierdź" />
                 </form>
             </c:if>
             <c:if test="${sessionScope.user.role == 'admin'}">

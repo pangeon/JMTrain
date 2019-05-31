@@ -1,5 +1,6 @@
 package san.jee.cecherz.dao.attendees;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -27,13 +28,13 @@ public class AttendeeRunner implements AttendeeFactory {
             "VALUES (:idprof, :name, :surname, :phone, :city, :postcode, :street)";
 
     private static final String SHOW_ALL_PROFILES_INFO =
-            "SELECT Attendees.id, Attendees.name, Attendees.surname, Attendees.phone, Attendees.city, Attendees.postcode, Attendees.street " +
+            "SELECT Attendees.id, Attendees.idprof, Attendees.name, Attendees.surname, Attendees.phone, Attendees.city, Attendees.postcode, Attendees.street " +
             "FROM Attendees INNER JOIN Profiles " +
             "ON Attendees.idprof = Profiles.id";
 
     private static final String SHOW_ONE_PROFILE_INFO =
             "SELECT id, idprof, name, surname, phone, city, postcode, street " +
-            "FROM Attendees WHERE id=:id";
+            "FROM Attendees WHERE idprof = :idprof";
 
     private NamedParameterJdbcTemplate template;
 
@@ -45,7 +46,8 @@ public class AttendeeRunner implements AttendeeFactory {
         Attendees a_result = new Attendees(a);
         KeyHolder kh = new GeneratedKeyHolder();
         Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("idprof", a.getIdprof().getId());
+        paramMap.put("id", a.getId());
+        paramMap.put("idprof", a.getProfiles().getId());
         paramMap.put("name", a.getName());
         paramMap.put("surname", a.getSurname());
         paramMap.put("phone", a.getPhone());
@@ -58,16 +60,20 @@ public class AttendeeRunner implements AttendeeFactory {
             a_result.setId((BigInteger) kh.getKey());
         }
         return a_result;
-
     }
     @Override
-    public Attendees read(BigInteger PK) {
-        Attendees a_result = null;
-        SqlParameterSource sps = new MapSqlParameterSource("id", PK);
-        a_result = template.queryForObject(SHOW_ONE_PROFILE_INFO, sps, new AttendeeRowMapper());
-        return a_result;
-    }
+    public Attendees read(BigInteger FK) {
+        try {
+            Attendees a_result = null;
+            SqlParameterSource sps = new MapSqlParameterSource("idprof", FK);
+            a_result = template.queryForObject(SHOW_ONE_PROFILE_INFO, sps, new AttendeeRowMapper());
+            return a_result;
+        } catch (EmptyResultDataAccessException e) {
+            System.out.println("Ten użytkownik nie zawiera jeszcze danych osobowych.");
+            return null;
+        }
 
+    }
     @Override
     public boolean update(Attendees a_up) {
         return false;
@@ -95,6 +101,7 @@ public class AttendeeRunner implements AttendeeFactory {
         public Attendees mapRow(ResultSet rs, int i) throws SQLException {
             Attendees attendeesList = new Attendees();
             attendeesList.setId(new BigInteger(Integer.valueOf(rs.getInt("id")).toString()));
+            attendeesList.setIdprof(new BigInteger(Integer.valueOf(rs.getInt("idprof")).toString()));
             attendeesList.setName(rs.getString("name"));
             attendeesList.setSurname(rs.getString("surname"));
             attendeesList.setPhone(rs.getString("phone"));
@@ -104,10 +111,4 @@ public class AttendeeRunner implements AttendeeFactory {
             return attendeesList;
         }
     }
-//    public Map<String, Object> readAttedees(BigInteger profileId) {
-//        Map<String, Object> params = new HashMap<>();
-//        params.put("idprof", profileId);
-//        return template.queryForMap(SHOW_ALL_PROFILES_INFO, params);
-//    }
-
 }

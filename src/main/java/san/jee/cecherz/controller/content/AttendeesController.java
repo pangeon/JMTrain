@@ -1,4 +1,4 @@
-package san.jee.cecherz.content;
+package san.jee.cecherz.controller.content;
 
 import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Profiles;
@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -21,7 +22,9 @@ public class AttendeesController extends HttpServlet {
             throws ServletException, IOException {
         if(req.getUserPrincipal() != null) {
             saveAttendeesInRequest(req);
-            saveAttendeeInfoInRequest(req);
+            Profiles profiles = (Profiles) req.getSession().getAttribute("user");
+            BigInteger FK = profiles.getId();
+            saveAttendeeInfoInRequest(req, FK);
             req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
         } else {
             resp.sendError(403);
@@ -50,10 +53,29 @@ public class AttendeesController extends HttpServlet {
         AttendeeService as = new AttendeeService();
         List<Attendees> attendeesList = as.getAllAttendees();
         req.setAttribute("profiles", attendeesList);
+        System.out.println("---saveAttendeesInRequest---");
+        for (Attendees attendees : attendeesList) {
+            System.out.println(attendees);
+        }
     }
-    private void saveAttendeeInfoInRequest(HttpServletRequest req) {
+    private void saveAttendeeInfoInRequest(HttpServletRequest req, int num) throws IndexOutOfBoundsException {
         AttendeeService as = new AttendeeService();
-        Attendees attendee = as.getAttendeeByID(new BigInteger("1"));
-        req.setAttribute("profile_info", attendee);
+        List<Attendees> attendeesList = as.getAllAttendees();
+        req.setAttribute("profile_info", attendeesList.get(num-1));
+        Attendees a = attendeesList.get(num-1);
+
+        System.out.println("---saveAttendeeInfoInRequest---");
+        System.out.println(a);
+        System.out.println("Number of user: " + (num));
     }
+    private void saveAttendeeInfoInRequest(HttpServletRequest req, BigInteger num) throws IndexOutOfBoundsException {
+        AttendeeService as = new AttendeeService();
+        Attendees a = as.getAttendeeByFK(num);
+        req.setAttribute("profile_info", a);
+
+        System.out.println("---saveAttendeeInfoInRequest---");
+        System.out.println(a);
+        System.out.println("Number of user: " + (num));
+    }
+
 }
