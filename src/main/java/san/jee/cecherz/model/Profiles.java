@@ -12,7 +12,7 @@ public class Profiles {
     private String password;
     private String ip;
     private String token;
-    private Timestamp reqstamp;
+    private Timestamp regstamp;
     private Timestamp confstamp;
     private Role role;
 
@@ -25,7 +25,7 @@ public class Profiles {
         this.password = profile.password;
         this.ip = profile.ip;
         this.token = profile.token;
-        this.reqstamp = profile.reqstamp;
+        this.regstamp = profile.regstamp;
         this.confstamp = profile.confstamp;
         this.role = profile.role;
     }
@@ -63,12 +63,12 @@ public class Profiles {
         this.token = token;
     }
 
-    public Timestamp getReqstamp() {
-        return reqstamp;
+    public Timestamp getRegstamp() {
+        return regstamp;
     }
 
-    public void setReqstamp(Timestamp reqstamp) {
-        this.reqstamp = reqstamp;
+    public void setRegstamp(Timestamp regstamp) {
+        this.regstamp = regstamp;
     }
 
     public Timestamp getConfstamp() {
@@ -107,7 +107,7 @@ public class Profiles {
                 ", password='" + password + '\'' +
                 ", ip='" + ip + '\'' +
                 ", token='" + token + '\'' +
-                ", reqstamp=" + reqstamp +
+                ", reqstamp=" + regstamp +
                 ", confstamp=" + confstamp +
                 ", role=" + role +
                 '}';
@@ -122,12 +122,12 @@ public class Profiles {
                 Objects.equals(password, profiles.password) &&
                 Objects.equals(ip, profiles.ip) &&
                 Objects.equals(token, profiles.token) &&
-                Objects.equals(reqstamp, profiles.reqstamp) &&
+                Objects.equals(regstamp, profiles.regstamp) &&
                 Objects.equals(confstamp, profiles.confstamp) &&
                 role == profiles.role;
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, ip, token, reqstamp, confstamp, role);
+        return Objects.hash(id, email, password, ip, token, regstamp, confstamp, role);
     }
 }

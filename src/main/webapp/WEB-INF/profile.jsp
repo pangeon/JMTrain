@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JMTrain v 0.1 test</title>
+    <title>JMTrain v 0.2</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="${pageContext.request.contextPath}/resources/css/bootstrap.css" type="text/css" rel="stylesheet">
@@ -56,56 +56,56 @@
                 </h3>
                 <form id="profileForm" class="form-signin" method="post" action="account">
                     <h4>Wprowadź dane profilowe:</h4>
-                            <div class="form-group">
-                            <input name="name" type="text" class="form-control" placeholder="Imię"
-                                   data-bv-regexp="true"
-                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
-                                   data-bv-regexp-message="Imię z dużej litery bez znaków specjalnych oraz liczb (min 3 znaki)."
-                                   required autofocus />
-                            </div>
-                            <div class="form-group">
-                            <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
-                                   data-bv-regexp="true"
-                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
-                                   data-bv-regexp-message="Nazwisko z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
-                                   required autofocus />
-                            </div>
-                            <div class="form-group">
-                            <input name="phone" type="tel" class="form-control" placeholder="Telefon"
-                                   data-bv-regexp="true"
-                                   data-bv-regexp-regexp="^[0-9\-\+]{9,15}$"
-                                   data-bv-regexp-message="Numer telefonu od 9 do 15 znaków. Znaki specjalne +/-"
-                                   required autofocus />
-                            </div>
-                            <div class="form-group">
-                            <input name="city" type="text" class="form-control" placeholder="Miasto"
-                                   data-bv-regexp="true"
-                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{3,30}$"
-                                   data-bv-regexp-message="Nazwa miasta pisana dużą literą (min 4 znaki). Możliwy odstęp."
-                                   required autofocus />
-                            </div>
-                            <div class="form-group">
-                            <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
-                                   data-bv-regexp="true"
-                                   data-bv-regexp-regexp="[0-9]{2}\-[0-9]{3}"
-                                   data-bv-regexp-message="Format XX-XXX."
-                                   autofocus />
-                            </div>
-                            <div class="form-group">
-                            <input name="street" type="text" class="form-control" placeholder="Ulica"
-                                   data-bv-regexp="true"
-                                   data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń0-9 /]{3,60}$"
-                                   data-bv-regexp-message="Pisane wielką literą (min 4 znaki). Dopuszczalny odstęp i znak \"
-                                   required autofocus />
-                            </div>
-                            <input class="btn btn-lg btn-primary btn-block" type="submit"
-                                   value="Zatwierdź" />
+                    <div class="form-group">
+                        <input name="name" type="text" class="form-control" placeholder="Imię"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                               data-bv-regexp-message="Imię z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
+                               required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                               data-bv-regexp-message="Nazwisko z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
+                               required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <input name="phone" type="tel" class="form-control" placeholder="Telefon"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="^[0-9\-\+]{9,15}$"
+                               data-bv-regexp-message="Numer telefonu od 9 do 15 znaków. Znaki specjalne +/-"
+                               required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <input name="city" type="text" class="form-control" placeholder="Miasto"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,30}$"
+                               data-bv-regexp-message="Nazwa miasta pisana dużą literą (min 3 znaki). Możliwy odstęp."
+                               required autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <input name="postcode" type="text" class="form-control" placeholder="Kod pocztowy"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="[0-9]{2}\-[0-9]{3}"
+                               data-bv-regexp-message="Format XX-XXX."
+                               autofocus/>
+                    </div>
+                    <div class="form-group">
+                        <input name="street" type="text" class="form-control" placeholder="Ulica"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń0-9 /]{2,60}$"
+                               data-bv-regexp-message="Pisane wielką literą (min 3 znaki). Dopuszczalny odstęp i znak \"
+                               required autofocus/>
+                    </div>
+                    <input class="btn btn-lg btn-primary btn-block" type="submit"
+                           value="Zatwierdź"/>
                 </form>
             </c:if>
             <c:if test="${sessionScope.user.role == 'admin'}">
-                <h1>DANE PROFILOWE UŻYTKOWNIKÓW</h1>
+                <h1>DANE PERSONALNE UŻYTKOWNIKÓW</h1>
                 <h3 style="text-align: center">
-                    Dane wszystkich użytkowników - obowiązuje unijna derektywa RODO*
+                    Dane personalne wszystkich użytkowników - obowiązuje unijna derektywa RODO*
                 </h3>
                 <table class="table table-bordered">
                     <thead>
@@ -132,8 +132,48 @@
                     </tbody>
                 </table>
             </c:if>
-        </div>
+            <c:if test="${requestScope.profilesList != null}">
+                <h1>PROFILE UŻYTKOWNIKÓW SYSTEMU</h1>
+                <h3 style="text-align: center">
+                    Użytkownicy zarejestrowani w systemie - obowiązuje unijna derektywa RODO*
+                </h3>
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th class="info text-center" scope="col">Id</th>
+                        <th class="info text-center" scope="col">E-mail</th>
+                        <th class="info text-center" scope="col">Hasło</th>
+                        <th class="info text-center" scope="col">IP</th>
+                        <th class="info text-center" scope="col">Token</th>
+                        <th class="info text-center" scope="col">Data rejestracji</th>
+                        <th class="info text-center" scope="col">Data aktywacji</th>
+                        <th class="info text-center" scope="col">Rola</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="profilesListItem" items="${requestScope.profilesList}">
+                        <tr>
+                            <td><c:out value="${profilesListItem.id}"/></td>
+                            <td><c:out value="${profilesListItem.email}"/></td>
+                            <td><c:out value="${profilesListItem.password}"/></td>
+                            <td><c:out value="${profilesListItem.ip}"/></td>
+                            <td><c:out value="${profilesListItem.token}"/></td>
+                            <td><fmt:formatDate value="${profilesListItem.regstamp}" type="both" dateStyle="short"
+                                                timeStyle="short"/></td>
+                            <td><fmt:formatDate value="${profilesListItem.confstamp}" type="both" dateStyle="short"
+                                                timeStyle="short"/></td>
+                            <td><c:out value="${profilesListItem.role}"/></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
 
+            <ul>
+                <li><a href="profile">Lista utworzonych profili.</a></li>
+                <li><a href="account">Dane personalne użytkowników</a></li>
+            </ul>
+        </div>
     </div>
 </div>
 

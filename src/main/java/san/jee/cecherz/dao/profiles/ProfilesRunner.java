@@ -20,10 +20,11 @@ import java.util.List;
 public class ProfilesRunner implements ProfilesFactory {
 
     private static final String CREATE_PROFILE =
-            "INSERT INTO Profiles(email, password, role, ip, token) " +
-                          "VALUES(:email, :password, :role, INET_ATON(:ip), :token);";
-    private static final String READ_PROFILE = "SELECT id, email, password, role, ip, token FROM Profiles WHERE id = :id";
-    private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, password, role, ip, token FROM Profiles WHERE email = :email";
+            "INSERT INTO Profiles(email, password, ip, token, role) " +
+                          "VALUES(:email, :password, INET_ATON(:ip), :token, :role);";
+    private static final String READ_PROFILE = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE id = :id";
+    private static final String READ_ALL_PROFILES = "SELECT * FROM Profiles";
+    private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE email = :email";
 
     private NamedParameterJdbcTemplate template;
 
@@ -80,9 +81,9 @@ public class ProfilesRunner implements ProfilesFactory {
 
     @Override
     public List<Profiles> getAll() {
-        return null;
+        List<Profiles> profilesList = template.query(READ_ALL_PROFILES, new ProfilesRowMapper());
+        return profilesList;
     }
-
     @Override
     public Profiles getProfilesByEmail(String email) {
         Profiles p_result = null;
@@ -98,13 +99,15 @@ public class ProfilesRunner implements ProfilesFactory {
             p.setId(new BigInteger(Integer.valueOf(rs.getInt("id")).toString()));
             p.setEmail(rs.getString("email"));
             p.setPassword(rs.getString("password"));
+            p.setIp(rs.getString("ip"));
+            p.setToken(rs.getString("token"));
+            p.setRegstamp(rs.getTimestamp("regstamp"));
+            p.setConfstamp(rs.getTimestamp("confstamp"));
             try {
                 p.setRole(Role.valueOf(rs.getString("role")));
             } catch (UnknownRoleException e) {
                 e.printStackTrace();
             }
-            p.setIp(rs.getString("ip"));
-            p.setToken(rs.getString("token"));
             return p;
         }
     }

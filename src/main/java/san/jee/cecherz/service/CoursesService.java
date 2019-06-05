@@ -12,12 +12,12 @@ public class CoursesService {
         return getAllCourses(null);
     }
     public List<Courses> getAllCourses(Comparator<Courses> comp) {
-        Factory f = Factory.getFactory();
-        CoursesFactory cf = f.getCoursesFactory();
-        List<Courses> cl = cf.getAll();
-        if(comp != null && cl != null) {
-            cl.sort(comp);
+        Factory factory = Factory.getFactory();
+        CoursesFactory cfactory = factory.getCoursesFactory();
+        List<Courses> coursesList = cfactory.getAll();
+        if(comp != null && coursesList != null) {
+            coursesList.sort(comp);
         }
-        return cl;
+        return coursesList;
     }
 }

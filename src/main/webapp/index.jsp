@@ -23,7 +23,7 @@
         </style>
     </head>
     <body>
-        <h1>-- JMTrain v. 0.1 --</h1>
+        <h1>-- JMTrain v. 0.2 --</h1>
         <ul>
             <li>Twoja przeglądarka: ${header['user-agent'] }</li>
             <li>Twój adres IP: <%= request.getRemoteAddr() %></li>

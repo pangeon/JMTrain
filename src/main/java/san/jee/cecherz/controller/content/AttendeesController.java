@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.math.BigInteger;
 import java.util.List;
 
@@ -48,32 +47,29 @@ public class AttendeesController extends HttpServlet {
         } else {
             resp.sendError(403);
         }
+        System.out.println("--doPost | AttendeesController--");
+        System.out.println("name: " + name);
+        System.out.println("surname: " + surname);
+        System.out.println("phone: " + phone);
+        System.out.println("city: " + city);
+        System.out.println("postcode: " + postcode);
+        System.out.println("street: " + street);
     }
     private void saveAttendeesInRequest(HttpServletRequest req) {
         AttendeeService as = new AttendeeService();
         List<Attendees> attendeesList = as.getAllAttendees();
         req.setAttribute("profiles", attendeesList);
-        System.out.println("---saveAttendeesInRequest---");
+        System.out.println("--saveAttendeesInRequest--");
         for (Attendees attendees : attendeesList) {
             System.out.println(attendees);
         }
-    }
-    private void saveAttendeeInfoInRequest(HttpServletRequest req, int num) throws IndexOutOfBoundsException {
-        AttendeeService as = new AttendeeService();
-        List<Attendees> attendeesList = as.getAllAttendees();
-        req.setAttribute("profile_info", attendeesList.get(num-1));
-        Attendees a = attendeesList.get(num-1);
-
-        System.out.println("---saveAttendeeInfoInRequest---");
-        System.out.println(a);
-        System.out.println("Number of user: " + (num));
     }
     private void saveAttendeeInfoInRequest(HttpServletRequest req, BigInteger num) throws IndexOutOfBoundsException {
         AttendeeService as = new AttendeeService();
         Attendees a = as.getAttendeeByFK(num);
         req.setAttribute("profile_info", a);
 
-        System.out.println("---saveAttendeeInfoInRequest---");
+        System.out.println("--saveAttendeeInfoInRequest--");
         System.out.println(a);
         System.out.println("Number of user: " + (num));
     }

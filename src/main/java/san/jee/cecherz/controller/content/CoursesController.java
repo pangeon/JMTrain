@@ -1,5 +1,6 @@
 package san.jee.cecherz.controller.content;
 
+import org.junit.Test;
 import san.jee.cecherz.model.Courses;
 import san.jee.cecherz.service.CoursesService;
 
@@ -20,8 +21,12 @@ public class CoursesController extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/start.jsp").forward(req, resp);
     }
     private void saveCoursesInRequest(HttpServletRequest req) {
-        CoursesService cs = new CoursesService();
-        List<Courses> cl = cs.getAllCourses(Comparator.comparing(Courses::getStart_date));
-        req.setAttribute("courses", cl);
+        CoursesService service = new CoursesService();
+        List<Courses> coursesList = service.getAllCourses(Comparator.comparing(Courses::getStart_date));
+        req.setAttribute("courses", coursesList);
+        System.out.println("--saveCoursesInRequest--");
+        for (Courses course : coursesList) {
+            System.out.println(course);
+        }
     }
 }

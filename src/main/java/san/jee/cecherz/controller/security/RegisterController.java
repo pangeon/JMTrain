@@ -31,10 +31,19 @@ public class RegisterController extends HttpServlet {
         String token = new TokenProvider().getToken();
         try {
             ps.addProfile(email, password, Role.attendee, ip, token);
-            System.out.println("Dodano użytkownika do bazy");
+            System.out.println("--RegisterController--");
+            System.out.println("Add user to database");
         } catch (UnknownRoleException e) {
+            System.out.println("--RegisterController--");
+            System.out.println("Error in user role");
             e.printStackTrace();
         }
+        System.out.println("--doPost | RegisterController--");
+        System.out.println("email: " + email);
+        System.out.println("password: " + password);
+        System.out.println("ip(v4): " + ip);
+        System.out.println("token: " + token);
+
         resp.sendRedirect(req.getContextPath() + "/");
 
     }

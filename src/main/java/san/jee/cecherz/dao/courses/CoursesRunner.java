@@ -28,10 +28,6 @@ public class CoursesRunner implements CoursesFactory {
     }
     @Override
     public Courses read(BigInteger PK) {
-//        Courses c_result = null;
-//        SqlParameterSource sps = new MapSqlParameterSource("id", PK);
-//        c_result = template.queryForObject(COURSES_LIST_FOR_ATTENDEES, sps, new CoursesRowMapper());
-//        return c_result;
         return null;
     }
     @Override
@@ -44,8 +40,8 @@ public class CoursesRunner implements CoursesFactory {
     }
     @Override
     public List<Courses> getAll() {
-        List<Courses> cl = template.query(COURSES_LIST_FOR_ATTENDEES, new CoursesRowMapper());
-        return cl;
+        List<Courses> coursesList = template.query(COURSES_LIST_FOR_ATTENDEES, new CoursesRowMapper());
+        return coursesList;
     }
     private class CoursesRowMapper implements RowMapper<Courses> {
 

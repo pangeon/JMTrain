@@ -14,5 +14,7 @@ public class LogoutServlet extends HttpServlet {
             throws IOException {
         req.getSession().invalidate();
         resp.sendRedirect(req.getContextPath() + "/");
+        System.out.println("--LogoutServlet--");
+        System.out.println("Session invalidate !");
     }
 }

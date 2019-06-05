@@ -28,7 +28,7 @@ class ProfilesTest {
         p.setPassword("QWee123;");
         p.setIp("120.76.0.11");
         p.setToken(token);
-        p.setReqstamp(time);
+        p.setRegstamp(time);
         p.setConfstamp(null);
         try {
             p.setRole(Role.attendee);
@@ -41,7 +41,7 @@ class ProfilesTest {
         assertEquals(p.getPassword(), "QWee123;");
         assertEquals(p.getIp(), "120.76.0.11");
         assertEquals(p.getToken(), token);
-        assertEquals(p.getReqstamp(), time);
+        assertEquals(p.getRegstamp(), time);
         assertEquals(p.getConfstamp(), null);
         assertEquals(p.getRole(), Role.attendee.name());
 
@@ -49,7 +49,7 @@ class ProfilesTest {
         System.out.println(
                 p.getId() + " " + p.getEmail() + " " +
                 p.getPassword() + " " + p.getIp() + " " +
-                p.getToken() + " " + p.getReqstamp() + " " +
+                p.getToken() + " " + p.getRegstamp() + " " +
                 p.getConfstamp() + " " + p.getRole());
     }
 }

@@ -35,6 +35,9 @@ public class LoginFilter implements Filter {
         Profiles profileByEmail = ps.getProfileByEmail(email);
         req.getSession(true).setAttribute("user", profileByEmail);
         req.getSession().setMaxInactiveInterval(300);
+        System.out.println("--saveProfileInSession--");
+        System.out.println("email: " + email);
+        System.out.println("profileByEmail: " + profileByEmail);
     }
     public void init(FilterConfig config) throws ServletException {}
     public void destroy() {}

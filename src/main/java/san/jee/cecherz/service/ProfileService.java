@@ -9,6 +9,8 @@ import san.jee.cecherz.model.Role;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Comparator;
+import java.util.List;
 
 public class ProfileService {
     /*
@@ -50,5 +52,17 @@ public class ProfileService {
         ProfilesFactory profilesFactory = factory.getProfilesFactory();
         Profiles profile = profilesFactory.getProfilesByEmail(email);
         return profile;
+    }
+    public List<Profiles> getAllProfiles() {
+        return getAllProfiles(null);
+    }
+    public List<Profiles> getAllProfiles(Comparator<Profiles> comp) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory pfactory = factory.getProfilesFactory();
+        List<Profiles> profilesList = pfactory.getAll();
+        if (comp != null && profilesList != null) {
+            profilesList.sort(comp);
+        }
+        return profilesList;
     }
 }
