@@ -19,5 +19,6 @@
            userRoleTable="Profiles"
            roleNameCol="role"
            localDataSource="true"
+           digest="MD5"
     />
 </Context>

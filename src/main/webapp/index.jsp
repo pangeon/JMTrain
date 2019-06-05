@@ -38,7 +38,7 @@
         <ul>
             <li>IntelliJ IDEA wersja enterprise.</li>
             <li>System operacyjny Linux Fedora 29, Linux Mint 19.1, WINDOWS 10</li>
-            <li>javac 11.0.1</li>
+            <li>javac 11.0.1, 12.0.1</li>
         </ul>
 
         <p>Wdrożenie aplikacji jest możliwe z dowolnego IDE, przy wybraniu preferowanej przez siebie wersji jdk oraz systemu operacyjnego.</p>
@@ -46,8 +46,8 @@
         <h4>2.Wymagania niezbędne:</h4>
         <ul>
             <li>Zainstalowane JDK</li>
-            <li>Serwer aplikacyjny Tomcat 9</li>
-            <li>MySQL Database 8.0.13 / Pakiet XAMPP</li>
+            <li>Serwer aplikacyjny Tomcat 7</li>
+            <li>MySQL Database 8.0.13 / Pakiet XAMPP (MariaDB)</li>
             <li>Maven</li>
         </ul>
         <h4>3.Maven zadba o pobranie bibliotek:</h4>
@@ -83,6 +83,9 @@
         <p>
             Zainstalowany pakiet XAMPP pozwala na skorzystanie z bazy danych MariaDB. Drobne różnice stwarzają konieczność użycia pliku \JMTrain\sql\scripts\jmtraindb_mdb.sql
             przy tworzeniu schematu bazy. Konieczna jest też zmiana kodowania, należy zastąpić plik my.ini (\JMTrain\sql\conf\my.ini) w pakiecie XAMPP (\xampp\mysql\bin)
+        </p>
+        <p>
+            Problemy: by mieć pewność że polecenia INSERT nie sprawią kłopotów, należy je przekopiować w okno konsoli przy inicjacji menadżera bazy w cmd.
         </p>
 
         <h3>URUCHOMIENIE APLIKACJI:</h3>
