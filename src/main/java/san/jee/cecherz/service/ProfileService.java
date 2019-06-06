@@ -65,4 +65,20 @@ public class ProfileService {
         }
         return profilesList;
     }
+    public Profiles updateProfilePassword(String email, String password) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory pfactory = factory.getProfilesFactory();
+        Profiles profileToUpdate = pfactory.getProfilesByEmail(email);
+        if(profileToUpdate != null) {
+            String md5pass = encryptPass(password);
+            profileToUpdate.setPassword(md5pass);
+            pfactory.update(profileToUpdate);
+        } else {
+            System.out.println("Profile is null !");
+        }
+        System.out.println("--updateProfilePassword--");
+        System.out.println("password: " + profileToUpdate.getPassword());
+        return profileToUpdate;
+
+    }
 }

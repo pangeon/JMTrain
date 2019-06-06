@@ -48,6 +48,18 @@
                         <td>${requestScope.profile_info.street}</td>
                     </tr>
                 </table>
+                <form id="passwordForm" class="form-inline" method="post" action="profile">
+                    <div class="form-group">
+                        <input name="updatepass" type="password" class="form-control" placeholder="Nowe hasło"
+                               data-bv-regexp="true"
+                               data-bv-regexp-regexp="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"
+                               data-bv-regexp-message="Hasło minimum osiem znaków w tym: duża litera, mała litera oraz liczba."
+                               required />
+                    </div>
+                    <button class="btn btn-md btn-warning" type="submit" >Zmień hasło</button>
+                </form>
+                <br />
+                <button class="btn btn-lg btn-danger btn-block" type="submit">Usuń konto z systemu</button>
             </c:if>
             <c:if test="${sessionScope.user.role == 'attendee' && requestScope.profile_info == null}">
                 <h1>DANE PROFILOWE</h1>
@@ -66,7 +78,7 @@
                     <div class="form-group">
                         <input name="surname" type="text" class="form-control" placeholder="Nazwisko"
                                data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
+                               data-bv-regexp-regexp="[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,30}$-[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,30}$|[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
                                data-bv-regexp-message="Nazwisko z dużej litery bez znaków specjalnych oraz liczb (min. 3 znaki)."
                                required autofocus/>
                     </div>
@@ -80,7 +92,7 @@
                     <div class="form-group">
                         <input name="city" type="text" class="form-control" placeholder="Miasto"
                                data-bv-regexp="true"
-                               data-bv-regexp-regexp="^[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,30}$"
+                               data-bv-regexp-regexp="[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,30}$-[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,30}$|[A-ZŁŻŹĄĘŚĆÓ][a-złżźąęćśóń]{2,60}$"
                                data-bv-regexp-message="Nazwa miasta pisana dużą literą (min 3 znaki). Możliwy odstęp."
                                required autofocus/>
                     </div>
@@ -102,7 +114,7 @@
                            value="Zatwierdź"/>
                 </form>
             </c:if>
-            <c:if test="${sessionScope.user.role == 'admin'}">
+            <c:if test="${sessionScope.user.role == 'admin' && requestScope.profiles != null}">
                 <h1>DANE PERSONALNE UŻYTKOWNIKÓW</h1>
                 <h3 style="text-align: center">
                     Dane personalne wszystkich użytkowników - obowiązuje unijna derektywa RODO*
@@ -132,7 +144,7 @@
                     </tbody>
                 </table>
             </c:if>
-            <c:if test="${requestScope.profilesList != null}">
+            <c:if test="${sessionScope.user.role == 'admin' && requestScope.profilesList != null}">
                 <h1>PROFILE UŻYTKOWNIKÓW SYSTEMU</h1>
                 <h3 style="text-align: center">
                     Użytkownicy zarejestrowani w systemie - obowiązuje unijna derektywa RODO*
@@ -168,11 +180,14 @@
                     </tbody>
                 </table>
             </c:if>
-
-            <ul>
-                <li><a href="profile">Lista utworzonych profili.</a></li>
-                <li><a href="account">Dane personalne użytkowników</a></li>
-            </ul>
+            <c:if test="${sessionScope.user.role == 'admin'}">
+                <div class="collapse navbar-collapse navHeaderCollapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li><a href="profile">Lista utworzonych profili</a></li>
+                        <li><a href="account">Dane personalne użytkowników</a></li>
+                    </ul>
+                </div>
+            </c:if>
         </div>
     </div>
 </div>
@@ -189,6 +204,9 @@
 <script>
     $(document).ready(function () {
         $('#profileForm').bootstrapValidator();
+    });
+    $(document).ready(function () {
+        $('#passwordForm').bootstrapValidator();
     });
 </script>
 </body>

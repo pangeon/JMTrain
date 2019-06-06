@@ -12,10 +12,13 @@ import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.model.Role;
 import san.jee.cecherz.util.ConnectionProvider;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ProfilesRunner implements ProfilesFactory {
 
@@ -25,6 +28,7 @@ public class ProfilesRunner implements ProfilesFactory {
     private static final String READ_PROFILE = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE id = :id";
     private static final String READ_ALL_PROFILES = "SELECT * FROM Profiles";
     private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE email = :email";
+    private static final String UPDATE_PROFILES_PASS = "UPDATE Profiles SET password = :password WHERE id = :id";
 
     private NamedParameterJdbcTemplate template;
 
@@ -70,8 +74,19 @@ public class ProfilesRunner implements ProfilesFactory {
     }
 
     @Override
-    public boolean update(Profiles updateObject) {
-        return false;
+    public boolean update(Profiles profile) {
+        boolean result = false;
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("password", profile.getPassword());
+        paramMap.put("id", profile.getId());
+        SqlParameterSource sps = new MapSqlParameterSource(paramMap);
+        int update = template.update(UPDATE_PROFILES_PASS, sps);
+        if(update > 0) {
+            result = true;
+        }
+        System.out.println("update() | --ProfilesRunner--");
+        System.out.println("query: " + UPDATE_PROFILES_PASS);
+        return result;
     }
 
     @Override
