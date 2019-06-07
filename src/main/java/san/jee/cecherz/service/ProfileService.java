@@ -79,6 +79,18 @@ public class ProfileService {
         System.out.println("--updateProfilePassword--");
         System.out.println("password: " + profileToUpdate.getPassword());
         return profileToUpdate;
+    }
+    public void deleteProfile(String email) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory pfactory = factory.getProfilesFactory();
+        Profiles profileToDelete = pfactory.getProfilesByEmail(email);
+        if(profileToDelete != null) {
+            pfactory.delete(profileToDelete);
+        } else {
+            System.out.println("Profile is null !");
+        }
+        System.out.println("--deleteProfile--");
+        System.out.println("email: " + profileToDelete.getEmail());
 
     }
 }

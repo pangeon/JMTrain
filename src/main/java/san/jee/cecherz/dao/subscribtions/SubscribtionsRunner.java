@@ -25,7 +25,7 @@ public class SubscribtionsRunner implements SubscribtionsFactory {
     }
 
     @Override
-    public boolean delete(BigInteger key) {
+    public boolean delete(Subscribtions key) {
         return false;
     }
 

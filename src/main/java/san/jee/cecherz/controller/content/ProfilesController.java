@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Comparator;
 import java.util.List;
 
@@ -27,13 +26,13 @@ public class ProfilesController extends HttpServlet {
         System.out.println("doGet | --ProfilesController--");
         System.out.println("action: " + action);
     }
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         if (req.getUserPrincipal() != null) {
             String password = req.getParameter("updatepass");
             updatePassword(req, password);
-            req.getRequestDispatcher("/WEB-INF/profile.jsp").forward(req, resp);
+            req.getSession().invalidate();
+            req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
 
             System.out.println("doPost | --ProfilesController--");
             System.out.println("updatepass: " + password);

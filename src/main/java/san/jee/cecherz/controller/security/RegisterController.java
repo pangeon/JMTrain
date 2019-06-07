@@ -44,7 +44,7 @@ public class RegisterController extends HttpServlet {
         System.out.println("ip(v4): " + ip);
         System.out.println("token: " + token);
 
-        resp.sendRedirect(req.getContextPath() + "/");
+        resp.sendRedirect(req.getContextPath() + "/WEB-INF/info.jsp");
 
     }
 }

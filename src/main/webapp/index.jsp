@@ -18,8 +18,6 @@
             h2:hover {
                 background-color: #2aabd2;
             }
-
-
         </style>
     </head>
     <body>
@@ -30,7 +28,7 @@
             <li>Rola: ${sessionScope.user.role}</li>
         </ul>
         <!-- VM Options -Djava.net.preferIPv4Stack=true -->
-        <h2><a href="start.jsp">START</a></h2>
+        <h2><a href="start">START</a></h2>
         <script src="${pageContext.request.contextPath}/resources/js/sessionCounter.js"></script>
 
         <h3>WYMAGANIA:</h3>

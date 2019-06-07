@@ -29,6 +29,7 @@ public class ProfilesRunner implements ProfilesFactory {
     private static final String READ_ALL_PROFILES = "SELECT * FROM Profiles";
     private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE email = :email";
     private static final String UPDATE_PROFILES_PASS = "UPDATE Profiles SET password = :password WHERE id = :id";
+    private static final String DELETE_PROFILE = "DELETE FROM Profiles WHERE email = :email";
 
     private NamedParameterJdbcTemplate template;
 
@@ -90,8 +91,17 @@ public class ProfilesRunner implements ProfilesFactory {
     }
 
     @Override
-    public boolean delete(BigInteger key) {
-        return false;
+    public boolean delete(Profiles profile) {
+        boolean result = false;
+        SqlParameterSource sps = new MapSqlParameterSource("email", profile.getEmail());
+        template.update(DELETE_PROFILE, sps);
+        int delete = template.update(DELETE_PROFILE, sps);
+        if(delete > 0) {
+            result = true;
+        }
+        System.out.println("delete() | --ProfilesRunner--");
+        System.out.println("query: " + DELETE_PROFILE);
+        return result;
     }
 
     @Override

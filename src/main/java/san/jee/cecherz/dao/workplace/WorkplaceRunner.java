@@ -22,7 +22,7 @@ public class WorkplaceRunner implements WorkplaceFactory {
     }
 
     @Override
-    public boolean delete(BigInteger key) {
+    public boolean delete(Workplace key) {
         return false;
     }
 

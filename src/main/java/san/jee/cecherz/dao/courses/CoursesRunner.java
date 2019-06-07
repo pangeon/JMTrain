@@ -35,7 +35,7 @@ public class CoursesRunner implements CoursesFactory {
         return false;
     }
     @Override
-    public boolean delete(BigInteger key) {
+    public boolean delete(Courses key) {
         return false;
     }
     @Override

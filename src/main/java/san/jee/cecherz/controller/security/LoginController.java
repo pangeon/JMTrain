@@ -1,5 +1,6 @@
 package san.jee.cecherz.controller.security;
 
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,9 +12,9 @@ public class LoginController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         if(req.getUserPrincipal() != null) {
-            resp.sendRedirect(req.getContextPath() + "/");
+            req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
         } else {
             resp.sendError(403);
         }

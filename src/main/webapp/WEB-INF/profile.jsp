@@ -59,7 +59,9 @@
                     <button class="btn btn-md btn-warning" type="submit" >Zmień hasło</button>
                 </form>
                 <br />
-                <button class="btn btn-lg btn-danger btn-block" type="submit">Usuń konto z systemu</button>
+                <form id="deleteForm" method="post" action="start">
+                    <button class="btn btn-lg btn-danger btn-block" type="submit">Usuń konto z systemu</button>
+                </form>
             </c:if>
             <c:if test="${sessionScope.user.role == 'attendee' && requestScope.profile_info == null}">
                 <h1>DANE PROFILOWE</h1>

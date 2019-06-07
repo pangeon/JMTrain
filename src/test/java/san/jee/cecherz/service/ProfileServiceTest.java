@@ -56,7 +56,7 @@ public class ProfileServiceTest {
     @Test
     void encryptPassTest() {
         String[] md5pass = new String[16];
-        md5pass[0] = profileService.encryptPass("ąężźćłó");
+        md5pass[0] = profileService.encryptPass("laska37");
         md5pass[1] = profileService.encryptPass("Alfaromeo88a");
         md5pass[2] = profileService.encryptPass("Zaradny33");
         md5pass[3] = profileService.encryptPass("adamos88");

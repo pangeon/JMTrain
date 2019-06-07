@@ -80,7 +80,7 @@ public class AttendeeRunner implements AttendeeFactory {
     }
 
     @Override
-    public boolean delete(BigInteger PK) {
+    public boolean delete(Attendees PK) {
         return false;
     }
 

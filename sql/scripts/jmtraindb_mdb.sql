@@ -46,7 +46,7 @@ CREATE TABLE Attendees(
     postcode 		VARCHAR(10),
     street 	 	VARCHAR(60) 	 	 	NOT NULL,
 			PRIMARY KEY(id),
-			FOREIGN KEY (idprof) 		REFERENCES Profiles(id)
+			FOREIGN KEY (idprof) 		REFERENCES Profiles(id) ON DELETE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
 #+-------------+---------------------+------+-----+---------+----------------+
 #| Field       | Type                | Null | Key | Default | Extra          |
@@ -102,7 +102,7 @@ CREATE TABLE Subscribtions (
     idattend BIGINT unsigned   NOT NULL,
     regstamp   TIMESTAMP    DEFAULT current_timestamp,
     PRIMARY KEY (id),
-    FOREIGN KEY (idcour)   REFERENCES Courses(id),
-    FOREIGN KEY (idworkpl) REFERENCES Workplace(id),
-    FOREIGN KEY (idattend) REFERENCES Attendees(id)
+    FOREIGN KEY (idcour)   REFERENCES Courses(id) ON DELETE CASCADE,
+    FOREIGN KEY (idworkpl) REFERENCES Workplace(id) ON DELETE CASCADE,
+    FOREIGN KEY (idattend) REFERENCES Attendees(id) ON DELETE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
