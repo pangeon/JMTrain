@@ -22,7 +22,7 @@ public class RegisterController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
-            throws IOException {
+            throws IOException, ServletException {
         req.setCharacterEncoding("UTF-8");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -44,7 +44,7 @@ public class RegisterController extends HttpServlet {
         System.out.println("ip(v4): " + ip);
         System.out.println("token: " + token);
 
-        resp.sendRedirect(req.getContextPath() + "/WEB-INF/info.jsp");
+        req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
 
     }
 }

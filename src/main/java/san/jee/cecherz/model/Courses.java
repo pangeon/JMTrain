@@ -6,7 +6,6 @@ import java.util.Objects;
 
 public class Courses {
     private BigInteger id;
-    private BigInteger trainer;
     private String title;
     private Timestamp start_date;
     private Timestamp end_date;
@@ -14,18 +13,28 @@ public class Courses {
     private Integer max_attende;
 
     public Courses() {}
+    public Courses(BigInteger id) {
+        this.id = id;
+    }
 
     public Courses(BigInteger id, BigInteger trainer, String title,
                    Timestamp start_date, Timestamp end_date,
                    String describtion, Integer max_attende)
     {
         this.id = id;
-        this.trainer = trainer;
         this.title = title;
         this.start_date = start_date;
         this.end_date = end_date;
         this.describtion = describtion;
         this.max_attende = max_attende;
+    }
+    public Courses(Courses c) {
+        this.id = c.id;
+        this.title = c.title;
+        this.start_date = c.start_date;
+        this.end_date = c.end_date;
+        this.describtion = c.describtion;
+        this.max_attende = c.max_attende;
     }
 
     public BigInteger getId() {
@@ -36,13 +45,6 @@ public class Courses {
         this.id = id;
     }
 
-    public BigInteger getTrainer() {
-        return trainer;
-    }
-
-    public void setTrainer(BigInteger trainer) {
-        this.trainer = trainer;
-    }
 
     public String getTitle() {
         return title;
@@ -88,7 +90,6 @@ public class Courses {
     public String toString() {
         return "Courses{" +
                 "id=" + id +
-                ", trainer=" + trainer +
                 ", title='" + title + '\'' +
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
@@ -102,7 +103,6 @@ public class Courses {
         if (o == null || getClass() != o.getClass()) return false;
         Courses courses = (Courses) o;
         return Objects.equals(id, courses.id) &&
-                Objects.equals(trainer, courses.trainer) &&
                 Objects.equals(title, courses.title) &&
                 Objects.equals(start_date, courses.start_date) &&
                 Objects.equals(end_date, courses.end_date) &&
@@ -111,6 +111,6 @@ public class Courses {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, trainer, title, start_date, end_date, describtion, max_attende);
+        return Objects.hash(id, title, start_date, end_date, describtion, max_attende);
     }
 }

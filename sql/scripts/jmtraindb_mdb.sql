@@ -98,7 +98,7 @@ CREATE TABLE Workplace(
 CREATE TABLE Subscribtions (
     id BIGINT unsigned   NOT NULL AUTO_INCREMENT,
     idcour BIGINT unsigned   NOT NULL,
-    idworkpl BIGINT unsigned   NOT NULL,
+    idworkpl BIGINT unsigned   NULL,
     idattend BIGINT unsigned   NOT NULL,
     regstamp   TIMESTAMP    DEFAULT current_timestamp,
     PRIMARY KEY (id),

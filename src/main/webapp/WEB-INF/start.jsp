@@ -52,7 +52,12 @@
                                                         dateStyle = "short" timeStyle = "short" /></td>
                                     <td><c:out value="${course.describtion}" /></td>
                                     <td><c:out value="${course.max_attende}" /></td>
-                                    <td><button type="button">Zapisz</button></td>
+                                    <td>
+                                        <form id="subsForm" method="post" action="subscribtions">
+                                            <input type="hidden" name="id" value="${course.id}"  />
+                                            <button class="btn btn-lg btn-danger btn-block" type="submit">Zapisz</button>
+                                        </form>
+                                    </td>
                                 </tr>
                             </c:forEach>
                             </tbody>

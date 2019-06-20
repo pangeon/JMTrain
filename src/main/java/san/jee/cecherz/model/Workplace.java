@@ -21,6 +21,14 @@ public class Workplace {
         this.floor = floor;
         this.room = room;
     }
+    public Workplace(Workplace w) {
+        this.id = w.id;
+        this.name = w.name;
+        this.city = w.city;
+        this.street = w.street;
+        this.floor = w.floor;
+        this.room = w.room;
+    }
 
     public BigInteger getId() {
         return id;
