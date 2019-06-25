@@ -1,15 +1,15 @@
 package san.jee.cecherz.service;
 
+import org.springframework.dao.DuplicateKeyException;
 import san.jee.cecherz.dao.Factory;
 import san.jee.cecherz.dao.subscribtions.SubscribtionsFactory;
 import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Courses;
 import san.jee.cecherz.model.Subscribtions;
-import san.jee.cecherz.model.Workplace;
 
 public class SubscribtionsService {
     // Metoda nie obsługuje tabeli Workplace - niezbędne modyfikacje
-    public void addNewSubscribtion(Courses c, Attendees a) {
+    public void addNewSubscribtion(Courses c, Attendees a) throws DuplicateKeyException {
         Subscribtions s = createNewSubscribtion(c, a);
         Factory f = Factory.getFactory();
         SubscribtionsFactory sf = f.getSubscribtionsFactory();

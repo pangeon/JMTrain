@@ -106,3 +106,5 @@ CREATE TABLE Subscribtions (
     FOREIGN KEY (idworkpl) REFERENCES Workplace(id) ON DELETE CASCADE,
     FOREIGN KEY (idattend) REFERENCES Attendees(id) ON DELETE CASCADE
 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_520_ci;
+
+CREATE UNIQUE INDEX uniq_subs ON Subscribtions (idcour, idattend);

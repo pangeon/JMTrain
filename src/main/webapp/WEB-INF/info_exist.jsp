@@ -18,11 +18,18 @@
 <div class="container">
     <div class="row bs-callout bs-callout-primary">
         <div class="col col-md-12 col-sm-12">
-            <button class="btn btn-danger btn-block" disabled="disabled" style="padding: 20px; font-size: 30px">Coś poszło nie tak !</button>
+            <button class="btn btn-info btn-info" disabled="disabled" style="padding: 20px; font-size: 30px; width: 100%">Już zostałeś zapisany na ten kurs !</button>
             <br />
-            <p class="btn-warning" style="text-align: center; padding: 10px;">Skontaktuj się z admininistratorem:
+            <br />
+            <p class="btn-info" disabled="disabled" style="text-align: center; padding: 10px;">Skontaktuj się z Nami:
                 <a href="mailto:kamil.cecherz@gmail">kamil.cecherz@gmail.com</a>
-                w celu wyjaśnienia problemu.
+                w celu uzyskania dodatkowych informacji. <br />Sprawdź swoją skrzynkę e-mail,
+                gdzie zawsze wysyłamy informacje potwierdzające odnośnie miejsca i terminu.
+                <br />
+                <br />
+                <strong>
+                    Jeśli planujesz zrezygnować nie potwierdzaj uczestnictwa w meilu lub skorzystaj z opcji <a href="#">wypisania się</a>.
+                </strong>
             </p>
         </div>
     </div>

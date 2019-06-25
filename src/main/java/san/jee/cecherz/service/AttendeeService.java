@@ -1,5 +1,6 @@
 package san.jee.cecherz.service;
 
+import org.springframework.dao.DuplicateKeyException;
 import san.jee.cecherz.dao.Factory;
 import san.jee.cecherz.dao.attendees.AttendeeFactory;
 import san.jee.cecherz.model.Attendees;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class AttendeeService {
     public void addProfileInfo(Profiles idprof, String name, String surname,
-            String phone, String city, String postcode, String street) {
+            String phone, String city, String postcode, String street) throws DuplicateKeyException {
             Attendees a = createAttendeInfo(
                     idprof, name, surname,
                     phone, city, postcode, street);

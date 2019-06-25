@@ -1,5 +1,6 @@
 package san.jee.cecherz.dao.subscribtions;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -12,6 +13,7 @@ import san.jee.cecherz.model.Workplace;
 import san.jee.cecherz.util.ConnectionProvider;
 
 import java.math.BigInteger;
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,6 +24,21 @@ public class SubscribtionsRunner implements SubscribtionsFactory {
     private static final String ADD_SUBSCRIBTION = "INSERT INTO Subscribtions(id, idcour, idattend) " +
                                                     "VALUES (:id, :idcour, :idattend)";
 
+    /*
+    INSERT INTO Subscribtions(idcour, idattend) VALUES(2, 3) WHERE NOT EXISTS
+    (SELECT * FROM Subscribtions WHERE idcour = :idcour AND idattend = :idattend);
+
+    IF NOT EXISTS (SELECT idcour, idattend FROM Subscribtions WHERE idcour = :idcour AND idattend = :idattend)
+    BEGIN
+           INSERT INTO Subscribtions (idcour, idattend) VALUES (:idcour, :idattend)
+    END;
+
+    IF EXISTS (SELECT * FROM Profiles)
+    BEGIN
+           INSERT INTO Subscribtions (idcour, idattend) VALUES (1, 2)
+    END;
+     */
+
     private NamedParameterJdbcTemplate template;
 
     public SubscribtionsRunner() {
@@ -30,20 +47,20 @@ public class SubscribtionsRunner implements SubscribtionsFactory {
 
     @Override
     // Metoda nie obsługuje tabeli Workplace - niezbędne modyfikacje
-    public Subscribtions create(Subscribtions s) {
-        Subscribtions s_result  = new Subscribtions(s);
-        KeyHolder kh = new GeneratedKeyHolder();
-        Map<String, Object> paramMap = new HashMap<>();
-        paramMap.put("id", s.getId());
-        paramMap.put("idcour", s.getCourse().getId());
-        //paramMap.put("idworkpl", s.getWorkplace().getId());
-        paramMap.put("idattend", s.getAttendee().getId());
-        SqlParameterSource sps = new MapSqlParameterSource(paramMap);
-        int update = template.update(ADD_SUBSCRIBTION, sps, kh);
-        if (update > 0) {
-            s_result.setId((BigInteger) kh.getKey());
-        }
-        return s_result;
+    public Subscribtions create(Subscribtions s) throws DuplicateKeyException {
+            Subscribtions s_result = new Subscribtions(s);
+            KeyHolder kh = new GeneratedKeyHolder();
+            Map<String, Object> paramMap = new HashMap<>();
+            paramMap.put("id", s.getId());
+            paramMap.put("idcour", s.getCourse().getId());
+            //paramMap.put("idworkpl", s.getWorkplace().getId());
+            paramMap.put("idattend", s.getAttendee().getId());
+            SqlParameterSource sps = new MapSqlParameterSource(paramMap);
+            int update = template.update(ADD_SUBSCRIBTION, sps, kh);
+            if (update > 0) {
+                s_result.setId((BigInteger) kh.getKey());
+            }
+            return s_result;
     }
     @Override
     public Subscribtions read(BigInteger primaryKey) {

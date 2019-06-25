@@ -1,5 +1,6 @@
 package san.jee.cecherz.controller.content;
 
+import org.springframework.dao.DuplicateKeyException;
 import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Courses;
 import san.jee.cecherz.model.Profiles;
@@ -35,7 +36,7 @@ public class SubscribtionsController extends HttpServlet {
             }
             req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
         } else {
-            sendError(req, resp);
+            sendError(req, resp, "error");
         }
         System.out.println("--doGet() | SubscribtionsController--");
         System.out.println("action:" + action);
@@ -43,31 +44,36 @@ public class SubscribtionsController extends HttpServlet {
 
     // Metoda nie obsługuje tabeli Workplace - niezbędne modyfikacje
     private void insertSubscribtionForUser(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
-        req.setCharacterEncoding("UTF-8");
-        String courseId = req.getParameter("id");
-        BigInteger PK = new BigInteger(courseId);
-        Courses course = new Courses(PK);
+        try {
+            req.setCharacterEncoding("UTF-8");
+            String courseId = req.getParameter("id");
+            BigInteger PK = new BigInteger(courseId);
+            Courses course = new Courses(PK);
 
-        //Workplace workplace = null;
+            //Workplace workplace = null;
 
-        Profiles profiles = (Profiles) req.getSession().getAttribute("user");
-        BigInteger FK = profiles.getId();
-        AttendeeService as = new AttendeeService();
-        Attendees attendee = as.getAttendeeByFK(FK);
+            Profiles profiles = (Profiles) req.getSession().getAttribute("user");
+            BigInteger FK = profiles.getId();
+            AttendeeService as = new AttendeeService();
+            Attendees attendee = as.getAttendeeByFK(FK);
 
-        if (req.getUserPrincipal() != null) {
-            SubscribtionsService ss = new SubscribtionsService();
-            ss.addNewSubscribtion(course, attendee);
-            req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
-        } else {
-            resp.sendError(403);
+            if (req.getUserPrincipal() != null) {
+                SubscribtionsService ss = new SubscribtionsService();
+                ss.addNewSubscribtion(course, attendee);
+                req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
+            } else {
+                resp.sendError(403);
+            }
+            System.out.println("--insertSubscribtionForUser | SubscribtionsController--");
+            System.out.println("course: " + course.getId());
+            //System.out.println("workplace: " + Objects.requireNonNull(workplace).getName());
+            System.out.println("attendee: " + attendee.getName());
+        } catch(DuplicateKeyException e) {
+            sendError(req, resp, "info_exist");
+            System.out.println("--DuplicateKeyException--");
         }
-        System.out.println("--insertSubscribtionForUser | SubscribtionsController--");
-        System.out.println("course: " + course.getId());
-        //System.out.println("workplace: " + Objects.requireNonNull(workplace).getName());
-        System.out.println("attendee: " + attendee.getName());
     }
-    private void sendError(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.getRequestDispatcher("/WEB-INF/error.jsp").forward(req, resp);
+    private void sendError(HttpServletRequest req, HttpServletResponse resp, String URL) throws ServletException, IOException {
+        req.getRequestDispatcher("/WEB-INF/" + URL + ".jsp").forward(req, resp);
     }
 }

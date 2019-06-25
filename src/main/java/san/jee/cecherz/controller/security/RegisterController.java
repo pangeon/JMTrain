@@ -1,5 +1,6 @@
 package san.jee.cecherz.controller.security;
 
+import org.springframework.dao.DuplicateKeyException;
 import san.jee.cecherz.dao.exception.UnknownRoleException;
 import san.jee.cecherz.model.Role;
 import san.jee.cecherz.service.ProfileService;
@@ -33,7 +34,7 @@ public class RegisterController extends HttpServlet {
             ps.addProfile(email, password, Role.attendee, ip, token);
             System.out.println("--RegisterController--");
             System.out.println("Add user to database");
-        } catch (UnknownRoleException e) {
+        } catch (UnknownRoleException | DuplicateKeyException e) {
             System.out.println("--RegisterController--");
             System.out.println("Error in user role");
             e.printStackTrace();

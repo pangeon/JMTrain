@@ -1,5 +1,6 @@
 package san.jee.cecherz.controller.content;
 
+import org.springframework.dao.DuplicateKeyException;
 import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.service.AttendeeService;
@@ -42,7 +43,11 @@ public class AttendeesController extends HttpServlet {
 
         if(req.getUserPrincipal() != null) {
             AttendeeService as = new AttendeeService();
-            as.addProfileInfo(activeProfile, name, surname, phone, city, postcode, street);
+            try {
+                as.addProfileInfo(activeProfile, name, surname, phone, city, postcode, street);
+            } catch (DuplicateKeyException e) {
+                e.printStackTrace();
+            }
             req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
         } else {
             resp.sendError(403);
