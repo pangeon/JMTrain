@@ -53,6 +53,12 @@ public class ProfileService {
         Profiles profile = profilesFactory.getProfilesByEmail(email);
         return profile;
     }
+    public Profiles getProfileForActivation(String email, String token) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory profilesFactory = factory.getProfilesFactory();
+        Profiles profile = profilesFactory.getProfilesForActivation(email, token);
+        return profile;
+    }
     public List<Profiles> getAllProfiles() {
         return getAllProfiles(null);
     }
@@ -78,6 +84,18 @@ public class ProfileService {
         }
         System.out.println("--updateProfilePassword--");
         System.out.println("password: " + profileToUpdate.getPassword());
+        return profileToUpdate;
+    }
+    public Profiles updateProfileStatus(String email, String token) {
+        Factory factory = Factory.getFactory();
+        ProfilesFactory pfactory = factory.getProfilesFactory();
+        Profiles profileToUpdate = pfactory.getProfilesForActivation(email, token);
+        if(profileToUpdate != null) {
+            profileToUpdate.setActive(1);
+            pfactory.activate(profileToUpdate);
+        } else {
+            System.out.println("Profile is null !");
+        }
         return profileToUpdate;
     }
     public void deleteProfile(String email) {

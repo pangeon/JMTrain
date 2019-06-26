@@ -156,12 +156,12 @@
                     <tr>
                         <th class="info text-center" scope="col">Id</th>
                         <th class="info text-center" scope="col">E-mail</th>
-                        <th class="info text-center" scope="col">Hasło</th>
                         <th class="info text-center" scope="col">IP</th>
                         <th class="info text-center" scope="col">Token</th>
                         <th class="info text-center" scope="col">Data rejestracji</th>
                         <th class="info text-center" scope="col">Data aktywacji</th>
                         <th class="info text-center" scope="col">Rola</th>
+                        <th class="info text-center" scope="col">Aktywny</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -169,7 +169,6 @@
                         <tr>
                             <td><c:out value="${profilesListItem.id}"/></td>
                             <td><c:out value="${profilesListItem.email}"/></td>
-                            <td><c:out value="${profilesListItem.password}"/></td>
                             <td><c:out value="${profilesListItem.ip}"/></td>
                             <td><c:out value="${profilesListItem.token}"/></td>
                             <td><fmt:formatDate value="${profilesListItem.regstamp}" type="both" dateStyle="short"
@@ -177,6 +176,14 @@
                             <td><fmt:formatDate value="${profilesListItem.confstamp}" type="both" dateStyle="short"
                                                 timeStyle="short"/></td>
                             <td><c:out value="${profilesListItem.role}"/></td>
+                            <td>
+                                <c:if test="${profilesListItem.active == 0}">
+                                    Nie
+                                </c:if>
+                                <c:if test="${profilesListItem.active == 1}">
+                                    Tak
+                                </c:if>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>

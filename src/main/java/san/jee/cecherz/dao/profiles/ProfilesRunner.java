@@ -12,7 +12,6 @@ import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.model.Role;
 import san.jee.cecherz.util.ConnectionProvider;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -25,10 +24,12 @@ public class ProfilesRunner implements ProfilesFactory {
     private static final String CREATE_PROFILE =
             "INSERT INTO Profiles(email, password, ip, token, role) " +
                           "VALUES(:email, :password, INET_ATON(:ip), :token, :role);";
-    private static final String READ_PROFILE = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE id = :id";
+    private static final String READ_PROFILE = "SELECT id, email, ip, token, regstamp, confstamp, role, active FROM Profiles WHERE id = :id";
     private static final String READ_ALL_PROFILES = "SELECT * FROM Profiles";
-    private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, password, ip, token, regstamp, confstamp, role FROM Profiles WHERE email = :email";
+    private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, ip, token, regstamp, confstamp, role, active FROM Profiles WHERE email = :email";
+    private static final String READ_PROFILE_FOR_ACTIVATION = "SELECT id, email, ip, token, regstamp, confstamp, role, active FROM Profiles WHERE email = :email AND token = :token";
     private static final String UPDATE_PROFILES_PASS = "UPDATE Profiles SET password = :password WHERE id = :id";
+    private static final String ACTIVATE_PROFILE = "UPDATE Profiles SET active = '1' WHERE email = :email AND token = :token";
     private static final String DELETE_PROFILE = "DELETE FROM Profiles WHERE email = :email";
 
     private NamedParameterJdbcTemplate template;
@@ -89,7 +90,22 @@ public class ProfilesRunner implements ProfilesFactory {
         System.out.println("query: " + UPDATE_PROFILES_PASS);
         return result;
     }
+    @Override
+    public boolean activate(Profiles profiles) {
+        boolean result = false;
+        Map<String, Object> paramMap = new HashMap<>();
+        paramMap.put("email", profiles.getEmail());
+        paramMap.put("token", profiles.getToken());
+        SqlParameterSource sps = new MapSqlParameterSource(paramMap);
+        int update = template.update(ACTIVATE_PROFILE, sps);
+        if(update > 0) {
+            result = true;
+        }
+        System.out.println("activate() | --ProfilesRunner--");
+        System.out.println("query: " + ACTIVATE_PROFILE);
+        return result;
 
+    }
     @Override
     public boolean delete(Profiles profile) {
         boolean result = false;
@@ -116,6 +132,14 @@ public class ProfilesRunner implements ProfilesFactory {
         p_result = template.queryForObject(READ_PROFILE_BY_EMAIL, sps, new ProfilesRowMapper());
         return p_result;
     }
+    @Override
+    public Profiles getProfilesForActivation(String email, String token) {
+        Profiles p_result = null;
+        SqlParameterSource sps = new MapSqlParameterSource("email", email).addValue("token", token);
+        p_result = template.queryForObject(READ_PROFILE_FOR_ACTIVATION, sps, new ProfilesRowMapper());
+        return p_result;
+    }
+
 
     private class ProfilesRowMapper implements RowMapper<Profiles> {
         @Override
@@ -123,7 +147,7 @@ public class ProfilesRunner implements ProfilesFactory {
             Profiles p = new Profiles();
             p.setId(new BigInteger(Integer.valueOf(rs.getInt("id")).toString()));
             p.setEmail(rs.getString("email"));
-            p.setPassword(rs.getString("password"));
+            //p.setPassword(rs.getString("password"));
             p.setIp(rs.getString("ip"));
             p.setToken(rs.getString("token"));
             p.setRegstamp(rs.getTimestamp("regstamp"));
@@ -133,6 +157,7 @@ public class ProfilesRunner implements ProfilesFactory {
             } catch (UnknownRoleException e) {
                 e.printStackTrace();
             }
+            p.setActive(rs.getInt("active"));
             return p;
         }
     }

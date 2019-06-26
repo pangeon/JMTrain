@@ -4,6 +4,7 @@ import org.springframework.dao.DuplicateKeyException;
 import san.jee.cecherz.dao.exception.UnknownRoleException;
 import san.jee.cecherz.model.Role;
 import san.jee.cecherz.service.ProfileService;
+import san.jee.cecherz.util.EmailSender;
 import san.jee.cecherz.util.TokenProvider;
 
 import javax.servlet.ServletException;
@@ -45,7 +46,8 @@ public class RegisterController extends HttpServlet {
         System.out.println("ip(v4): " + ip);
         System.out.println("token: " + token);
 
+        EmailSender sender = new EmailSender(email, token);
+        sender.sendEmail();
         req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
-
     }
 }

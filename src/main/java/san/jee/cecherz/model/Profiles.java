@@ -15,6 +15,7 @@ public class Profiles {
     private Timestamp regstamp;
     private Timestamp confstamp;
     private Role role;
+    private int active;
 
 
     public Profiles() {};
@@ -28,6 +29,7 @@ public class Profiles {
         this.regstamp = profile.regstamp;
         this.confstamp = profile.confstamp;
         this.role = profile.role;
+        this.active = profile.active;
     }
     public BigInteger getId() {
         return id;
@@ -99,6 +101,13 @@ public class Profiles {
         return role.name();
     }
 
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
+    }
     @Override
     public String toString() {
         return "Profiles{" +
@@ -107,9 +116,10 @@ public class Profiles {
                 ", password='" + password + '\'' +
                 ", ip='" + ip + '\'' +
                 ", token='" + token + '\'' +
-                ", reqstamp=" + regstamp +
+                ", regstamp=" + regstamp +
                 ", confstamp=" + confstamp +
                 ", role=" + role +
+                ", active=" + active +
                 '}';
     }
     @Override
@@ -117,7 +127,8 @@ public class Profiles {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Profiles profiles = (Profiles) o;
-        return Objects.equals(id, profiles.id) &&
+        return active == profiles.active &&
+                Objects.equals(id, profiles.id) &&
                 Objects.equals(email, profiles.email) &&
                 Objects.equals(password, profiles.password) &&
                 Objects.equals(ip, profiles.ip) &&
@@ -128,6 +139,6 @@ public class Profiles {
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, ip, token, regstamp, confstamp, role);
+        return Objects.hash(id, email, password, ip, token, regstamp, confstamp, role, active);
     }
 }
