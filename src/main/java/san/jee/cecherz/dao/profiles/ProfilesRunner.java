@@ -29,7 +29,7 @@ public class ProfilesRunner implements ProfilesFactory {
     private static final String READ_PROFILE_BY_EMAIL = "SELECT id, email, ip, token, regstamp, confstamp, role, active FROM Profiles WHERE email = :email";
     private static final String READ_PROFILE_FOR_ACTIVATION = "SELECT id, email, ip, token, regstamp, confstamp, role, active FROM Profiles WHERE email = :email AND token = :token";
     private static final String UPDATE_PROFILES_PASS = "UPDATE Profiles SET password = :password WHERE id = :id";
-    private static final String ACTIVATE_PROFILE = "UPDATE Profiles SET active = '1' WHERE email = :email AND token = :token";
+    private static final String ACTIVATE_PROFILE = "UPDATE Profiles SET active = '1', token = NULL, confstamp = now() WHERE email = :email AND token = :token";
     private static final String DELETE_PROFILE = "DELETE FROM Profiles WHERE email = :email";
 
     private NamedParameterJdbcTemplate template;

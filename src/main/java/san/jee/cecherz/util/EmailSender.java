@@ -39,8 +39,15 @@ public class EmailSender {
             message.setFrom(new InternetAddress(email));
             message.addRecipient(MimeMessage.RecipientType.TO, new InternetAddress(user_email));
             message.setSubject("Link weryfikacyjny portalu JMTrain.");
-            message.setText(user_email + " klinkij w link aby potwierdzić chęć rejestracji.");
-            message.setText("http://localhost:8080/JMTrain/ActivateAccount?key1=" + user_email + "&key2=" + token);
+
+            message.setContent(
+                    "<h3>:: Wiadomość z portalu JMTrain ::</h3><hr />" +
+                        "<h4>Witaj ! <br />" +
+                        user_email + " klinkij w link aby potwierdzić chęć rejestracji: <br />" +
+                        "http://localhost:8080/JMTrain/ActivateAccount?key1=" + user_email + "&key2=" + token + "</h4><hr />" +
+                        "<h5>Jeśli ta wiadomość trafiła do Ciebie przypadkiem zignoruj ją.</h5>",
+                    "text/html; charset=utf-8");
+            message.saveChanges();
             System.out.println(message);
             Transport.send(message);
         } catch(Exception e) {
