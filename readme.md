@@ -1,4 +1,5 @@
-﻿WYMAGANIA:
+### WYMAGANIA:
+
 -------------------------
 1.Przestestowano w określonych warunkach: 
 -IntelliJ IDEA wersja enterprise.
@@ -26,7 +27,8 @@ Wdrożenie aplikacji jest możliwe z dowolnego IDE, przy wybraniu preferowanej p
 *taglibs-standard-spec 1.2.1
 
 
-URUCHOMIENIE BAZY DANYCH:
+### URUCHOMIENIE BAZY DANYCH:
+
 ------------------------
 1) LINUX ***
 Poprzez interfejs tekstowy w konsoli:
@@ -45,7 +47,8 @@ przy tworzeniu schematu bazy. Konieczna jest też zmiana kodowania, należy zast
 
 Problemy: by mieć pewność że polecenia INSERT nie sprawią kłopotów, należy je przekopiować w okno konsoli przy inicjacji menadżera bazy w cmd
 
-URUCHOMIENIE APLIKACJI:
+### URUCHOMIENIE APLIKACJI:
+
 ------------------------
 1.Na serwerze aplikacyjnym powinny zlaleźć się pliki wysłane tam w postaci pliku .war. 
 Foldery określają położenie plików "webapps" lub "work/Catalina/localhost" (w zależności od tego czy wysyłamy pliki przy pomocy interfejsu webowego tomcata czy IDE)
@@ -54,7 +57,8 @@ Foldery określają położenie plików "webapps" lub "work/Catalina/localhost" 
 	UWAGA ! Opcja "-Djava.net.preferIPv4Stack=true" (VM Options) wymusza adres IP w wersji IPv4, co jest użyteczne przy testowaniu. 
 
 
-PRAWA AUTORSKIE I ŹRÓDŁA:
+### PRAWA AUTORSKIE I ŹRÓDŁA:
+
 -------------------------
 
 [Aplikacja zainspirowana tutorial-em: https://javastart.pl/kurs/java-ee]
