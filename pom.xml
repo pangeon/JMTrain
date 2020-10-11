@@ -78,10 +78,6 @@
       <version>1.2.1</version>
     </dependency>
     <dependency>
-      <groupId>org.apache.catalina</groupId>
-      <artifactId>catalina</artifactId>
-    </dependency>
-    <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>RELEASE</version>
