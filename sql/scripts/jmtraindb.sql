@@ -95,7 +95,7 @@ CREATE TABLE Workplace(
 #| idattend | bigint(20) unsigned | NO   | MUL | NULL              |                   |
 #| regstamp | timestamp           | NO   |     | CURRENT_TIMESTAMP | DEFAULT_GENERATED |
 #+----------+---------------------+------+-----+-------------------+-------------------+
-CREATE TABLE Subscribtions (
+CREATE TABLE Subscription (
     id 			BIGINT unsigned  	 	NOT NULL AUTO_INCREMENT,
     idcour		BIGINT unsigned  	 	NOT NULL,
     idworkpl		BIGINT unsigned  	 	NOT NULL,

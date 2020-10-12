@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.Properties;
 
 public class ConnectionTest {
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
@@ -13,8 +12,8 @@ public class ConnectionTest {
 
         Connection c = DriverManager.getConnection(
                 "jdbc:mysql://localhost:3306/JMTrainDB?useSSL=false&serverTimezone=UTC",
-                "root",
-                "Pangeon66#");
+                "jmtrain_user",
+                "jmtrain_pass");
         Statement s = c.createStatement();
         String q = "SELECT * FROM Profiles;";
         ResultSet rs = s.executeQuery(q);

@@ -7,8 +7,8 @@
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000"
-              username="root"
-              password="Pangeon66#"
+              username="jmtrain_user"
+              password="jmtrain_pass"
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/JMTrainDB?useSSL=false&amp;serverTimezone=UTC" />
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
