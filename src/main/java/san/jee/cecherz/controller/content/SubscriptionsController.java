@@ -5,7 +5,7 @@ import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Courses;
 import san.jee.cecherz.model.Profiles;
 import san.jee.cecherz.service.AttendeeService;
-import san.jee.cecherz.service.SubscribtionsService;
+import san.jee.cecherz.service.SubscriptionsService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -58,7 +58,7 @@ public class SubscribtionsController extends HttpServlet {
             Attendees attendee = as.getAttendeeByFK(FK);
 
             if (req.getUserPrincipal() != null) {
-                SubscribtionsService ss = new SubscribtionsService();
+                SubscriptionsService ss = new SubscriptionsService();
                 ss.addNewSubscribtion(course, attendee);
                 req.getRequestDispatcher("/WEB-INF/info.jsp").forward(req, resp);
             } else {

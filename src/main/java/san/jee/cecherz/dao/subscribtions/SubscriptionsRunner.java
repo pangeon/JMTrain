@@ -8,12 +8,11 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import san.jee.cecherz.model.Attendees;
 import san.jee.cecherz.model.Courses;
-import san.jee.cecherz.model.Subscribtions;
-import san.jee.cecherz.model.Workplace;
+import san.jee.cecherz.model.Subscriptions;
+import san.jee.cecherz.model.Workplaces;
 import san.jee.cecherz.util.ConnectionProvider;
 
 import java.math.BigInteger;
-import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,8 +46,8 @@ public class SubscribtionsRunner implements SubscribtionsFactory {
 
     @Override
     // Metoda nie obsługuje tabeli Workplace - niezbędne modyfikacje
-    public Subscribtions create(Subscribtions s) throws DuplicateKeyException {
-            Subscribtions s_result = new Subscribtions(s);
+    public Subscriptions create(Subscriptions s) throws DuplicateKeyException {
+            Subscriptions s_result = new Subscriptions(s);
             KeyHolder kh = new GeneratedKeyHolder();
             Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("id", s.getId());
@@ -63,19 +62,19 @@ public class SubscribtionsRunner implements SubscribtionsFactory {
             return s_result;
     }
     @Override
-    public Subscribtions read(BigInteger primaryKey) {
+    public Subscriptions read(BigInteger primaryKey) {
         return null;
     }
     @Override
-    public boolean update(Subscribtions updateObject) {
+    public boolean update(Subscriptions updateObject) {
         return false;
     }
     @Override
-    public boolean delete(Subscribtions key) {
+    public boolean delete(Subscriptions key) {
         return false;
     }
     @Override
-    public List<Subscribtions> getAll() {
+    public List<Subscriptions> getAll() {
         return null;
     }
     @Override
@@ -87,7 +86,7 @@ public class SubscribtionsRunner implements SubscribtionsFactory {
         return null;
     }
     @Override
-    public Workplace getWorkplaceByFK(BigInteger ForeignKey) {
+    public Workplaces getWorkplaceByFK(BigInteger ForeignKey) {
         return null;
     }
 }
