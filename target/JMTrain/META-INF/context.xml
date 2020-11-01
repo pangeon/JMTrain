@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+    <Resource name="jdbc/JMTrainDB"
+              auth="Container"
+              type="javax.sql.DataSource"
+              initialSize="10"
+              maxTotal="100"
+              maxIdle="30"
+              maxWaitMillis="10000"
+              username="jmtrain_user"
+              password="jmtrain_pass"
+              driverClassName="com.mysql.cj.jdbc.Driver"
+              url="jdbc:mysql://localhost:3306/JMTrainDB?useSSL=false&amp;serverTimezone=UTC" />
+    <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           dataSourceName="jdbc/JMTrainDB"
+           userTable="Profiles"
+           userNameCol="email"
+           userCredCol="password"
+           userRoleTable="Profiles"
+           roleNameCol="role"
+           localDataSource="true"
+           digest="MD5"
+    />
+</Context>

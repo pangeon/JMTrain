@@ -55,18 +55,6 @@
     </jsp-property-group>
   </jsp-config>
 
-  <!-- SERVLET MAPPING -->
-  <!--  <servlet>-->
-  <!--    <servlet-name>SubscribtionsController</servlet-name>-->
-  <!--    <servlet-class>san.jee.cecherz.controller.content.SubscribtionsController</servlet-class>-->
-  <!--  </servlet>-->
-
-  <!--  <servlet-mapping>-->
-  <!--    <servlet-name>SubscribtionsController</servlet-name>-->
-  <!--    <url-pattern>/</url-pattern>-->
-  <!--  </servlet-mapping>-->
-
-  <!-- SESSION CONFIG -->
   <session-config>
     <session-timeout>5</session-timeout>
   </session-config>

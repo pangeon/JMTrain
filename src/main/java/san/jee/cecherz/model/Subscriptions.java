@@ -4,19 +4,19 @@ import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Subscribtions {
+public class Subscriptions {
     private BigInteger id;
     private BigInteger idcour;
     private BigInteger idworkpl;
     private BigInteger idattend;
     private Timestamp regstamp;
     private Courses course;
-    private Workplace workplace;
+    private Workplaces workplaces;
     private Attendees attendee;
 
-    public Subscribtions() {}
+    public Subscriptions() {}
 
-    public Subscribtions(Subscribtions s)
+    public Subscriptions(Subscriptions s)
     {
         this.id = s.id;
         this.idcour = s.idcour;
@@ -24,7 +24,7 @@ public class Subscribtions {
         this.idattend = s.idattend;
         this.regstamp = s.regstamp;
         this.course = s.course;
-        this.workplace = s.workplace;
+        this.workplaces = s.workplaces;
         this.attendee = s.attendee;
     }
     public BigInteger getId() {
@@ -63,11 +63,11 @@ public class Subscribtions {
     public void setCourse(Courses course) {
         this.course = course;
     }
-    public Workplace getWorkplace() {
-        return workplace;
+    public Workplaces getWorkplace() {
+        return workplaces;
     }
-    public void setWorkplace(Workplace workplace) {
-        this.workplace = workplace;
+    public void setWorkplace(Workplaces workplaces) {
+        this.workplaces = workplaces;
     }
     public Attendees getAttendee() {
         return attendee;
@@ -77,14 +77,14 @@ public class Subscribtions {
     }
     @Override
     public String toString() {
-        return "Subscribtions{" +
+        return "Subscriptions{" +
                 "id=" + id +
                 ", idcour=" + idcour +
                 ", idworkpl=" + idworkpl +
                 ", idattend=" + idattend +
                 ", regstamp=" + regstamp +
                 ", course=" + course +
-                ", workplace=" + workplace +
+                ", workplace=" + workplaces +
                 ", attendee=" + attendee +
                 '}';
     }
@@ -92,18 +92,18 @@ public class Subscribtions {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Subscribtions that = (Subscribtions) o;
+        Subscriptions that = (Subscriptions) o;
         return id.equals(that.id) &&
                 idcour.equals(that.idcour) &&
                 idworkpl.equals(that.idworkpl) &&
                 idattend.equals(that.idattend) &&
                 regstamp.equals(that.regstamp) &&
                 course.equals(that.course) &&
-                workplace.equals(that.workplace) &&
+                workplaces.equals(that.workplaces) &&
                 attendee.equals(that.attendee);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, idcour, idworkpl, idattend, regstamp, course, workplace, attendee);
+        return Objects.hash(id, idcour, idworkpl, idattend, regstamp, course, workplaces, attendee);
     }
 }

@@ -6,7 +6,7 @@ import san.jee.cecherz.model.*;
 import java.math.BigInteger;
 import java.util.List;
 
-public interface SubscribtionsFactory extends GenericFactory<Subscriptions, BigInteger> {
+public interface SubscriptionsFactory extends GenericFactory<Subscriptions, BigInteger> {
     List<Subscriptions> getAll();
     Attendees getAttendeeByFK(BigInteger ForeignKey);
     Courses getCourseByFK(BigInteger ForeignKey);

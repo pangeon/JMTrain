@@ -54,7 +54,6 @@ public class EmailSender {
             System.out.println("--EmailSender | sendEmail()--");
             System.out.println(e.toString());
         }
-
     }
 
     public static void main(String[] args) {

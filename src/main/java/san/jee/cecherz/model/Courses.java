@@ -9,7 +9,7 @@ public class Courses {
     private String title;
     private Timestamp start_date;
     private Timestamp end_date;
-    private String describtion;
+    private String description;
     private Integer max_attende;
 
     public Courses() {}
@@ -19,13 +19,13 @@ public class Courses {
 
     public Courses(BigInteger id, BigInteger trainer, String title,
                    Timestamp start_date, Timestamp end_date,
-                   String describtion, Integer max_attende)
+                   String description, Integer max_attende)
     {
         this.id = id;
         this.title = title;
         this.start_date = start_date;
         this.end_date = end_date;
-        this.describtion = describtion;
+        this.description = description;
         this.max_attende = max_attende;
     }
     public Courses(Courses c) {
@@ -33,7 +33,7 @@ public class Courses {
         this.title = c.title;
         this.start_date = c.start_date;
         this.end_date = c.end_date;
-        this.describtion = c.describtion;
+        this.description = c.description;
         this.max_attende = c.max_attende;
     }
 
@@ -70,12 +70,12 @@ public class Courses {
         this.end_date = end_date;
     }
 
-    public String getDescribtion() {
-        return describtion;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDescribtion(String describtion) {
-        this.describtion = describtion;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public Integer getMax_attende() {
@@ -93,7 +93,7 @@ public class Courses {
                 ", title='" + title + '\'' +
                 ", start_date=" + start_date +
                 ", end_date=" + end_date +
-                ", describtion='" + describtion + '\'' +
+                ", describtion='" + description + '\'' +
                 ", max_attende=" + max_attende +
                 '}';
     }
@@ -106,11 +106,11 @@ public class Courses {
                 Objects.equals(title, courses.title) &&
                 Objects.equals(start_date, courses.start_date) &&
                 Objects.equals(end_date, courses.end_date) &&
-                Objects.equals(describtion, courses.describtion) &&
+                Objects.equals(description, courses.description) &&
                 Objects.equals(max_attende, courses.max_attende);
     }
     @Override
     public int hashCode() {
-        return Objects.hash(id, title, start_date, end_date, describtion, max_attende);
+        return Objects.hash(id, title, start_date, end_date, description, max_attende);
     }
 }

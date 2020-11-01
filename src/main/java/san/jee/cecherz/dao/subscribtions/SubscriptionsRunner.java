@@ -17,42 +17,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class SubscribtionsRunner implements SubscribtionsFactory {
+public class SubscriptionsRunner implements SubscriptionsFactory {
 
-    // Zapytanie nie obsługuje tabeli Workplace - niezbędne modyfikacje
-    private static final String ADD_SUBSCRIBTION = "INSERT INTO Subscribtions(id, idcour, idattend) " +
+    private static final String ADD_SUBSCRIBTION = "INSERT INTO Subscriptions(id, idcour, idattend) " +
                                                     "VALUES (:id, :idcour, :idattend)";
-
-    /*
-    INSERT INTO Subscribtions(idcour, idattend) VALUES(2, 3) WHERE NOT EXISTS
-    (SELECT * FROM Subscribtions WHERE idcour = :idcour AND idattend = :idattend);
-
-    IF NOT EXISTS (SELECT idcour, idattend FROM Subscribtions WHERE idcour = :idcour AND idattend = :idattend)
-    BEGIN
-           INSERT INTO Subscribtions (idcour, idattend) VALUES (:idcour, :idattend)
-    END;
-
-    IF EXISTS (SELECT * FROM Profiles)
-    BEGIN
-           INSERT INTO Subscribtions (idcour, idattend) VALUES (1, 2)
-    END;
-     */
 
     private NamedParameterJdbcTemplate template;
 
-    public SubscribtionsRunner() {
+    public SubscriptionsRunner() {
         template = new NamedParameterJdbcTemplate(ConnectionProvider.getDSInstance());
     }
 
     @Override
-    // Metoda nie obsługuje tabeli Workplace - niezbędne modyfikacje
     public Subscriptions create(Subscriptions s) throws DuplicateKeyException {
             Subscriptions s_result = new Subscriptions(s);
             KeyHolder kh = new GeneratedKeyHolder();
             Map<String, Object> paramMap = new HashMap<>();
             paramMap.put("id", s.getId());
             paramMap.put("idcour", s.getCourse().getId());
-            //paramMap.put("idworkpl", s.getWorkplace().getId());
             paramMap.put("idattend", s.getAttendee().getId());
             SqlParameterSource sps = new MapSqlParameterSource(paramMap);
             int update = template.update(ADD_SUBSCRIBTION, sps, kh);

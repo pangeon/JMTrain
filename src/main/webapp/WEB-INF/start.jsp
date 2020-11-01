@@ -51,10 +51,10 @@
                                                     dateStyle="short" timeStyle="short"/></td>
                                 <td><fmt:formatDate value="${course.end_date}" type="both"
                                                     dateStyle="short" timeStyle="short"/></td>
-                                <td><c:out value="${course.describtion}"/></td>
+                                <td><c:out value="${course.description}"/></td>
                                 <td><c:out value="${course.max_attende}"/></td>
                                 <td>
-                                    <form id="subsForm" method="post" action="subscribtions">
+                                    <form id="subsForm" method="post" action="subscriptions">
                                         <input type="hidden" name="id" value="${course.id}"/>
                                         <button class="btn btn-lg btn-danger btn-block" type="submit">Zapisz</button>
                                     </form>

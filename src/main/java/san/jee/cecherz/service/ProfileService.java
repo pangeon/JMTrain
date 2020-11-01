@@ -13,10 +13,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class ProfileService {
-    /*
-    addProfile() - odpowiedzialna za utworzenie obiektu klasy Profiles i zapisanie odpowiednich danych w bazie.
-    Argumenty metody będą pochodziły z żądania przesłanego do właściwego kontrolera.
-     */
     public void addProfile(String email, String password, Role role, String ip, String token) throws UnknownRoleException {
         Profiles profile = new Profiles();
         profile.setEmail(email);
@@ -109,6 +105,5 @@ public class ProfileService {
         }
         System.out.println("--deleteProfile--");
         System.out.println("email: " + profileToDelete.getEmail());
-
     }
 }

@@ -3,7 +3,7 @@ package san.jee.cecherz.model;
 import java.math.BigInteger;
 import java.util.Objects;
 
-public class Workplace {
+public class Workplaces {
     private BigInteger id;
     private String name;
     private String city;
@@ -11,9 +11,9 @@ public class Workplace {
     private Integer floor;
     private Integer room;
 
-    public Workplace() {}
+    public Workplaces() {}
 
-    public Workplace(BigInteger id, String name, String city, String street, Integer floor, Integer room) {
+    public Workplaces(BigInteger id, String name, String city, String street, Integer floor, Integer room) {
         this.id = id;
         this.name = name;
         this.city = city;
@@ -21,7 +21,7 @@ public class Workplace {
         this.floor = floor;
         this.room = room;
     }
-    public Workplace(Workplace w) {
+    public Workplaces(Workplaces w) {
         this.id = w.id;
         this.name = w.name;
         this.city = w.city;
@@ -80,7 +80,7 @@ public class Workplace {
 
     @Override
     public String toString() {
-        return "Workplace{" +
+        return "Workplaces{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
@@ -89,18 +89,17 @@ public class Workplace {
                 ", room=" + room +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Workplace workplace = (Workplace) o;
-        return Objects.equals(id, workplace.id) &&
-                Objects.equals(name, workplace.name) &&
-                Objects.equals(city, workplace.city) &&
-                Objects.equals(street, workplace.street) &&
-                Objects.equals(floor, workplace.floor) &&
-                Objects.equals(room, workplace.room);
+        Workplaces workplaces = (Workplaces) o;
+        return Objects.equals(id, workplaces.id) &&
+                Objects.equals(name, workplaces.name) &&
+                Objects.equals(city, workplaces.city) &&
+                Objects.equals(street, workplaces.street) &&
+                Objects.equals(floor, workplaces.floor) &&
+                Objects.equals(room, workplaces.room);
     }
     @Override
     public int hashCode() {

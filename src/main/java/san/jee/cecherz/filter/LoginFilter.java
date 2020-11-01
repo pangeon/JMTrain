@@ -15,13 +15,6 @@ import java.io.IOException;
 
 @WebFilter(filterName = "LoginFilter", value = "/*")
 public class LoginFilter implements Filter {
-
-    /*
-    Filtr posiada mapowanie, które sprawia, że metoda doFilter() wykona się przed przejściem do jakiejkolwiek strony.
-    Sprawdzamy warunek jeżeli użytkownik się zalogował(metoda getUserPrincipal() zwraca wartość
-    różną od null) oraz jednocześnie obiekt user na poziomie sesji nie istnieje, to go tam zapisujemy pobierając użytkownika
-    z bazy danych na podstawie znanej nam nazwy użytkownika. Następnie żądanie przekazywane jest do adresu docelowego.
-     */
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
         HttpServletRequest http_req = (HttpServletRequest) req;
         if(http_req.getUserPrincipal() != null && http_req.getSession().getAttribute("user") == null) {

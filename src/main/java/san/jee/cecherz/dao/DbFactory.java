@@ -6,10 +6,10 @@ import san.jee.cecherz.dao.courses.CoursesFactory;
 import san.jee.cecherz.dao.courses.CoursesRunner;
 import san.jee.cecherz.dao.profiles.ProfilesFactory;
 import san.jee.cecherz.dao.profiles.ProfilesRunner;
-import san.jee.cecherz.dao.subscribtions.SubscribtionsFactory;
-import san.jee.cecherz.dao.subscribtions.SubscribtionsRunner;
-import san.jee.cecherz.dao.workplace.WorkplaceFactory;
-import san.jee.cecherz.dao.workplace.WorkplaceRunner;
+import san.jee.cecherz.dao.subscribtions.SubscriptionsFactory;
+import san.jee.cecherz.dao.subscribtions.SubscriptionsRunner;
+import san.jee.cecherz.dao.workplace.WorkplacesFactory;
+import san.jee.cecherz.dao.workplace.WorkplacesRunner;
 
 public class DbFactory extends Factory {
 
@@ -26,12 +26,12 @@ public class DbFactory extends Factory {
         return new CoursesRunner();
     }
     @Override
-    public WorkplaceFactory getWorkplaceFactory() {
-        return new WorkplaceRunner();
+    public WorkplacesFactory getWorkplacesFactory() {
+        return new WorkplacesRunner();
     }
     @Override
-    public SubscribtionsFactory getSubscribtionsFactory() {
-        return new SubscribtionsRunner();
+    public SubscriptionsFactory getSubscriptionsFactory() {
+        return new SubscriptionsRunner();
     }
 
 }

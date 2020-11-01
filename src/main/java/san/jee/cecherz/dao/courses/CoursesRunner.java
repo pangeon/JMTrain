@@ -13,7 +13,7 @@ import java.util.List;
 public class CoursesRunner implements CoursesFactory {
 
     private static final String COURSES_LIST_FOR_ATTENDEES =
-            "SELECT id, title, start_date, end_date, describtion, max_attende " +
+            "SELECT id, title, start_date, end_date, description, max_attende " +
             "FROM Courses";
 
     private NamedParameterJdbcTemplate template;
@@ -52,7 +52,7 @@ public class CoursesRunner implements CoursesFactory {
             c.setTitle(rs.getString("title"));
             c.setStart_date(rs.getTimestamp("start_date"));
             c.setEnd_date(rs.getTimestamp("end_date"));
-            c.setDescribtion(rs.getString("describtion"));
+            c.setDescription(rs.getString("description"));
             c.setMax_attende(rs.getInt("max_attende"));
             return c;
         }

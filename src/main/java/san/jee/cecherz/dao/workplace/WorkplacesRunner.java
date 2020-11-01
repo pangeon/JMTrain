@@ -1,33 +1,33 @@
 package san.jee.cecherz.dao.workplace;
 
-import san.jee.cecherz.model.Workplace;
+import san.jee.cecherz.model.Workplaces;
 
 import java.math.BigInteger;
 import java.util.List;
 
-public class WorkplaceRunner implements WorkplaceFactory {
+public class WorkplacesRunner implements WorkplacesFactory {
     @Override
-    public Workplace create(Workplace newObject) {
+    public Workplaces create(Workplaces newObject) {
         return null;
     }
 
     @Override
-    public Workplace read(BigInteger primaryKey) {
+    public Workplaces read(BigInteger primaryKey) {
         return null;
     }
 
     @Override
-    public boolean update(Workplace updateObject) {
+    public boolean update(Workplaces updateObject) {
         return false;
     }
 
     @Override
-    public boolean delete(Workplace key) {
+    public boolean delete(Workplaces key) {
         return false;
     }
 
     @Override
-    public List<Workplace> getAll() {
+    public List<Workplaces> getAll() {
         return null;
     }
 }

@@ -2,8 +2,12 @@
 
 ## Description
 
-## Changelog
+Application allow to management courses. Program allow edit personal users data and add enrollments for courses. 
+The application is secure - sends confirmation via email after registration and encrypts passwords. Database writes 
+data use algorithm MD5.
 
+## Changelog
+* 0.0.4 - add better README.MD, fix bugs with names. Clear start page.
 ## Requirements
 
 ### Software
@@ -19,6 +23,7 @@
 
 ### Maven dependencies
 
+* junit-jupiter-api 5.4.2
 * mysql-connector-java 8.0.16
 * javax.servlet-api 4.0.1
 * commons-logging 1.2
@@ -28,6 +33,8 @@
 * spring-tx 4.1.4.RELEASE
 * taglibs-standard-impl 1.2.1
 * taglibs-standard-spec 1.2.1
+* junit 4.13.1
+* javax.mail-api 1.6.0
 
 ## Deployment guide
 #### General information
@@ -77,200 +84,22 @@
    CREATE DATABASE JMTrainDB;
    USE JMTrainDB;
     ```    
-3) Create tables from SQL files.
+3) Create tables use SQL file [CREATE.SQL](sql/scripts/CREATE.sql).
+4) Insert sample use SQL file [INSERT.SQL](sql/scripts/INSERT.sql).
+    *  passwords are encrypted [MD5 Hash Generator](https://www.md5hashgenerator.com/)
+    <br /> **When you are want log in check user id and password** in [users_passwords](sql/conf/users_passwords) file.
+    * all profiles are default active 
+6) Add profile and active it used gmail account:
+    * mail: **mailbox.jmtrain@gmail.com**
+    * password: **Pangeon66#**
 
-    ```SQL
-    CREATE TABLE Profiles(
-        id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-        email VARCHAR(45) NOT NULL UNIQUE,
-        password VARCHAR(60) NOT NULL,
-        ip INT(4) unsigned NOT NULL,
-        token VARCHAR(45) UNIQUE,
-        regstamp TIMESTAMP NOT NULL DEFAULT now(),
-        confstamp TIMESTAMP DEFAULT NULL,
-        role ENUM('admin', 'trainer', 'attendee') NOT NULL,
-        active INT(11) DEFAULT NULL,
-    PRIMARY KEY (id)
-    );
-    
-    CREATE TABLE Attendees(
-        id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-        idprof BIGINT unsigned NOT NULL UNIQUE,
-        name VARCHAR(60) NOT NULL,
-        surname VARCHAR(60) NOT NULL,
-        phone VARCHAR(20) NOT NULL UNIQUE,
-        city VARCHAR(30) NOT NULL,
-        postcode VARCHAR(10),
-        street VARCHAR(60) NOT NULL,
-    PRIMARY KEY(id),
-    FOREIGN KEY (idprof) REFERENCES Profiles(id) ON DELETE CASCADE
-    );
-    
-    CREATE TABLE Courses(
-        id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-        title VARCHAR(60) NOT NULL,
-        start_date TIMESTAMP NOT NULL,
-        end_date TIMESTAMP NOT NULL,
-        describtion TEXT,
-        max_attende SMALLINT,
-    PRIMARY KEY(id)
-    );
-    
-    CREATE TABLE Workplace(
-        id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-        name VARCHAR(60),
-        city VARCHAR(30) NOT NULL,
-        street VARCHAR(60) NOT NULL,
-        floor SMALLINT(2),
-        room SMALLINT(3),
-    PRIMARY KEY (id)
-    );
-    
-    CREATE TABLE Subscribtions (
-        id BIGINT unsigned NOT NULL AUTO_INCREMENT,
-        idcour BIGINT unsigned NOT NULL,
-        idworkpl BIGINT unsigned NOT NULL,
-        idattend BIGINT unsigned NOT NULL,
-        regstamp TIMESTAMP NOT NULL DEFAULT now(),
-     PRIMARY KEY (id),
-     FOREIGN KEY (idcour) REFERENCES Courses(id) ON DELETE CASCADE,
-     FOREIGN KEY (idworkpl) REFERENCES Workplace(id) ON DELETE CASCADE,
-     FOREIGN KEY (idattend)  REFERENCES Attendees(id) ON DELETE CASCADE
-    );
-    ```
-4) Insert sample data from SQL file.
+See more by reviewing the class code: 
+* [EmailSender](src/main/java/san/jee/cecherz/util/EmailSender.java) 
+* [TokenProvider](src/main/java/san/jee/cecherz/util/TokenProvider.java)
 
-    ```SQL
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'agnieszka.lasota2@vp.pl', 'laska37', 'attendee', INET_ATON('10.1.220.76')
-    );
-    
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'kamil.cecherz@gmail.com', 'Alfaromeo88a', 'admin', INET_ATON('15.10.221.16')
-    );
-    
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'bed46@wp.pl', 'Zaradny33', 'trainer', INET_ATON('10.1.220.77')
-    );
-    
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'wolnygosc@interia.pl', 'adamos88', 'trainer', INET_ATON('10.19.220.76')
-    );
-    
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'a.kowal16@tlen.pl', 'DaS3Ek#', 'attendee', INET_ATON('100.10.220.76')
-    );
-    
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'radekignasiak13@onet.pl', 'OleniuniaMoja', 'attendee', INET_ATON('108.19.30.76')
-    );
-    
-    INSERT INTO Profiles (email, password, role, ip) VALUES (
-       'm.wlazlak@wsparciespoleczne.pl', 'W44#00Abc', 'attendee', INET_ATON('34.22.22.1')
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       1, 'Agnieszka', 'Lasota', '+48 609 383 855', 'Ksawerów', '95-054', 'Wschodnia 26'
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       2, 'Kamil', 'Cecherz', '+48 798 996 422', 'Łódź', '96-018', 'Powstańców Wielkopolskich 24/17'
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       3, 'Łukasz', 'Bednarski', '+48 786 207 883', 'Łęczyca', '99-100', 'Ozorkowska 9'
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       4, 'Adam', 'Wolniewicz', '+48 693 044 971', 'Łódź', '90-001', 'Komandorska 3/2'
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       5, 'Adam', 'Kowalewski', '+48 602 732 532', 'Tomaszów Mazowiecki', '97-200', 'Głowackiego 19a/55'
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       6, 'Radosław', 'Ignasiak', '+48 506 601 295', 'Łódź', '90-001', 'Leopolda Tyrmanda 104/22'
-    );
-    
-    INSERT INTO Attendees (idprof, name, surname, phone, city, postcode, street) VALUES (
-       7, 'Małgorzata', 'Wlaźlak', '+48 796 141 420', 'Warszawa', '02-321', 'Aleje Jerozolimskie 107a/3'
-    );
-    
-    INSERT INTO Courses (title, start_date, end_date, describtion, max_attende) VALUES (
-        'Nowoczesne aplikacje w Java EE',
-        '2019-05-20 14:30:00',
-        '2019-07-20 16:00:00',
-        'Tworzenie aplikacji z wykorzystaniem JDBC, Servletów, MYSQL, JSP',
-        12
-    );
-    
-    INSERT INTO Courses (title, start_date, end_date, describtion, max_attende) VALUES (
-        'Podstawy HTML I CSS',
-        '2019-05-20 18:30:00',
-        '2019-05-25 18:30:00',
-        'Nauka tworzenia stron WWW od podstaw, FTP',
-        30
-    );
-    
-    INSERT INTO Courses (title, start_date, end_date, describtion, max_attende) VALUES (
-        'Analiza danych tekstowych i języka naturalnego (Python)',
-        '2019-07-10 12:30:00',
-        '2019-07-13 17:00:00',
-        'Nauczenie szeregu narzędzi do pracy z danymi tekstowymi, przedstawienie szeregu
-        przykładów użycia pokrywających większość tematów tej dziedziny.',
-        10
-    );
-    
-    INSERT INTO Workplace (name, city, street, floor, room) VALUES (
-       'Urbanica',
-       'Łódź',
-       'Wróblewskiego 18',
-       8,
-       302
-    );
-    
-    INSERT INTO Workplace (name, city, street, floor, room) VALUES (
-       'Sages sp. z.o.o',
-       'Warszawa',
-       'Nowogródzka 62c',
-       null,
-       null
-    );
-    
-    INSERT INTO Subscribtions(idcour, idworkpl, idattend) VALUES (
-       1, 1, 2
-    );
-    
-    INSERT INTO Subscribtions(idcour, idworkpl, idattend) VALUES (
-       2, 2, 1
-    );  
-    
-    INSERT INTO Subscribtions(idcour, idworkpl, idattend) VALUES (
-       2, 2, 5
-    ); 
-    
-    INSERT INTO Subscribtions(idcour, idworkpl, idattend) VALUES (
-       2, 2, 6
-    );
-    ```    
-5) Update sample data profiles [MD5 Hash Generator](https://www.md5hashgenerator.com/)
+## Database structure
+![database schemat](readme-img/diagram_jmtraindb.PNG)
 
-    ```SQL
-    UPDATE PROFILES SET password="12c44a927ee9fc12f97ee80c55353780" WHERE id=1;
-    UPDATE PROFILES SET password="ef21dbe084b394c9a8cd1a65fd7e54ee" WHERE id=2;
-    UPDATE PROFILES SET password="36d9349a9c3b70184b209f3acf69ed03" WHERE id=3;
-    UPDATE PROFILES SET password="3bfa575c4e2bd3e3470defa718dca2ed" WHERE id=4;
-    UPDATE PROFILES SET password="7ffe7df02ac3ce14e7ad6c6048df1352" WHERE id=5;
-    UPDATE PROFILES SET password="6e1cb029e0e57561a190af445d8287f7" WHERE id=6;
-    UPDATE PROFILES SET password="967133b87c245338e5652eae9e33e838" WHERE id=7;
-    ```
-6) Active manually profiles
-
-    ```SQL
-    UPDATE Profiles SET active=1;
-   ```
-   
 ## Author
 
 * Kamil Cecherz as [pangeon](https://cecherz.pl)

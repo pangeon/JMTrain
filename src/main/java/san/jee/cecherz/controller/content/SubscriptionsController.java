@@ -15,15 +15,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigInteger;
 
-@WebServlet(name = "SubscribtionsController", value = "/subscribtions")
-public class SubscribtionsController extends HttpServlet {
+@WebServlet(name = "SubscriptionsController", value = "/subscriptions")
+public class SubscriptionsController extends HttpServlet {
     private static final long serialVersionUID = 1L;
-
 
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         doGet(req, resp);
     }
-
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String action = req.getServletPath();
@@ -38,19 +36,16 @@ public class SubscribtionsController extends HttpServlet {
         } else {
             sendError(req, resp, "error");
         }
-        System.out.println("--doGet() | SubscribtionsController--");
+        System.out.println("--doGet() | SubscriptionsController--");
         System.out.println("action:" + action);
     }
 
-    // Metoda nie obsługuje tabeli Workplace - niezbędne modyfikacje
     private void insertSubscribtionForUser(HttpServletRequest req, HttpServletResponse resp) throws IOException, ServletException {
         try {
             req.setCharacterEncoding("UTF-8");
             String courseId = req.getParameter("id");
             BigInteger PK = new BigInteger(courseId);
             Courses course = new Courses(PK);
-
-            //Workplace workplace = null;
 
             Profiles profiles = (Profiles) req.getSession().getAttribute("user");
             BigInteger FK = profiles.getId();
@@ -66,7 +61,6 @@ public class SubscribtionsController extends HttpServlet {
             }
             System.out.println("--insertSubscribtionForUser | SubscribtionsController--");
             System.out.println("course: " + course.getId());
-            //System.out.println("workplace: " + Objects.requireNonNull(workplace).getName());
             System.out.println("attendee: " + attendee.getName());
         } catch(DuplicateKeyException e) {
             sendError(req, resp, "info_exist");
