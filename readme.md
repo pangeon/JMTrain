@@ -81,7 +81,7 @@ data use algorithm MD5.
 3) Create database and use it.
 
     ```SQL
-   CREATE DATABASE JMTrainDB;
+   CREATE DATABASE JMTrainDB CHARACTER SET utf8mb4 COLLATE utf8mb4_polish_ci;
    USE JMTrainDB;
     ```    
 3) Create tables use SQL file [CREATE.SQL](sql/scripts/CREATE.sql).
