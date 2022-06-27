@@ -5,7 +5,7 @@ INSERT INTO Profiles (email, password, role, ip, active)
 VALUES ('kamil.cecherz@gmail.com', 'ef21dbe084b394c9a8cd1a65fd7e54ee', 'admin', INET_ATON('15.10.221.16'), 1);
 
 INSERT INTO Profiles (email, password, role, ip, active)
-VALUES ('bed46@wp.pl', 'Zaradny33', '36d9349a9c3b70184b209f3acf69ed03', INET_ATON('10.1.220.77'), 1);
+VALUES ('bed46@wp.pl', '36d9349a9c3b70184b209f3acf69ed03', 'attendee', INET_ATON('10.1.220.77'), 1);
 
 INSERT INTO Profiles (email, password, role, ip, active)
 VALUES ('wolnygosc@interia.pl', '3bfa575c4e2bd3e3470defa718dca2ed', 'trainer', INET_ATON('10.19.220.76'), 1);
