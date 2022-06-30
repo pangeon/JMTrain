@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <footer class="footer">
     <div class="container">
-        <p class="navbar-text pull-left">JMTrain v. 0.4 - developed by <a href="https://github.com/pangeon">Kamil Cecherz</a></p>
+        <p class="navbar-text pull-left">JMTrain v. 0.5 - developed by <a href="https://github.com/pangeon">Kamil Cecherz</a></p>
         <c:if test="${not empty sessionScope.user}">
             <p class="navbar-text pull-right">
                 Zalogowany jako:

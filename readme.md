@@ -8,6 +8,7 @@ data use algorithm MD5.
 
 ## Changelog
 * 0.0.4 - add better README.MD, fix bugs with names. Clear start page.
+* 0.0.5 - update README.MD, fix bugs with configuration, update dependencies, add configuration xml file
 ## Requirements
 
 ### Software
@@ -24,18 +25,18 @@ data use algorithm MD5.
 
 ### Maven dependencies
 
-* junit-jupiter-api 5.4.2
-* mysql-connector-java 8.0.16
+* junit-jupiter-api 5.8.2
+* mysql-connector-java 8.0.29
 * javax.servlet-api 4.0.1
 * commons-logging 1.2
-* spring-beans 4.1.4.RELEASE
-* spring-core 4.3.21.RELEASE
-* spring-jdbc 4.1.4.RELEASE
-* spring-tx 4.1.4.RELEASE
-* taglib-standard-impl 1.2.1
-* taglib-standard-spec 1.2.1
-* junit 4.13.1
-* javax.mail-api 1.6.0
+* spring-beans 5.3.20
+* spring-core 5.3.20
+* spring-jdbc 5.3.20
+* spring-tx 5.3.20
+* taglib-standard-impl 1.2.5
+* taglib-standard-spec 1.2.5
+* junit 4.13.2
+* javax.mail-api 1.6.2
 
 ## Deployment guide
 #### General information
@@ -53,7 +54,7 @@ data use algorithm MD5.
 #### Configuration application server using IntelliJ IDEA
 1) Download and unpack **Tomcat** from 
 [Apache Foundation](https://tomcat.apache.org/).
-2) Setting up Tomcat 7 - [Details](https://federicoponte.wordpress.com/2013/08/02/setting-up-tomcat-7-with-intellij-idea/)
+2) Setting up Tomcat - [Details](https://federicoponte.wordpress.com/2013/08/02/setting-up-tomcat-7-with-intellij-idea/)
     * Uncompressed the folder anywhere you want
     * **Click on Run -> Edit Configurations…**
     -> Search on the left for Tomcat Server and select Local

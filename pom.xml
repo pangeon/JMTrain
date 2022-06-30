@@ -6,7 +6,7 @@
 
   <groupId>san.jee.cecherz</groupId>
   <artifactId>JMTrain</artifactId>
-  <version>0.1</version>
+  <version>0.5</version>
   <packaging>war</packaging>
 
   <name>JMTrain - Training Manager</name>
