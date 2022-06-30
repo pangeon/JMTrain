@@ -14,7 +14,7 @@
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>Auth</web-resource-name>
-      <description>Resource can be availble after login</description>
+      <description>Resource can be available after login</description>
       <url-pattern>/login</url-pattern>
       <http-method>GET</http-method>
       <http-method>POST</http-method>
