@@ -1,9 +1,6 @@
 package san.jee.cecherz.util;
 
-import javax.mail.Authenticator;
-import javax.mail.PasswordAuthentication;
-import javax.mail.Session;
-import javax.mail.Transport;
+import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
@@ -19,7 +16,7 @@ public class EmailSender {
     }
     public void sendEmail() {
         String email = "mailbox.jmtrain@gmail.com";
-        String password = "Pangeon66#";
+        String password = "qxtkbmjtdmionrqv";
 
         Properties properties = new Properties();
         properties.put("mail.smtp.auth", "true");

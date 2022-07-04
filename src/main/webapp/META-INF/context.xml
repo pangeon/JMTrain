@@ -12,13 +12,17 @@
               driverClassName="com.mysql.cj.jdbc.Driver"
               url="jdbc:mysql://localhost:3306/JMTrainDB?useSSL=false&amp;serverTimezone=UTC" />
     <Realm className="org.apache.catalina.realm.DataSourceRealm"
+           driverName="com.mysql.cj.jdbc.Driver"
            dataSourceName="jdbc/JMTrainDB"
-           userTable="Profiles"
-           userNameCol="email"
-           userCredCol="password"
-           userRoleTable="Profiles"
            roleNameCol="role"
-           localDataSource="true"
-           digest="MD5"
-    />
+           userCredCol="password"
+           userNameCol="email"
+           userRoleTable="Profiles"
+           userTable="Profiles"
+           localDataSource="true">
+        <CredentialHandler
+            className="org.apache.catalina.realm.MessageDigestCredentialHandler"
+            algorithm="md5"
+        />
+    </Realm>
 </Context>

@@ -6,11 +6,11 @@
 
   <groupId>san.jee.cecherz</groupId>
   <artifactId>JMTrain</artifactId>
-  <version>0.1</version>
+  <version>0.5</version>
   <packaging>war</packaging>
 
-  <name>JMTrain - Trainig Manager</name>
-  <url>http://www.ceherz.pl</url>
+  <name>JMTrain - Training Manager</name>
+  <url>https://www.ceherz.pl</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -22,19 +22,19 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.4.2</version>
+      <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.4.2</version>
+      <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>8.0.28</version>
+      <version>8.0.29</version>
     </dependency>
     <dependency>
       <groupId>javax.servlet</groupId>
@@ -50,43 +50,43 @@
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-beans</artifactId>
-      <version>5.3.18</version>
+      <version>5.3.20</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-core</artifactId>
-      <version>5.2.22.RELEASE</version>
+      <version>5.3.20</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-jdbc</artifactId>
-      <version>4.1.4.RELEASE</version>
+      <version>5.3.20</version>
     </dependency>
     <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-tx</artifactId>
-      <version>4.1.4.RELEASE</version>
+      <version>5.3.20</version>
     </dependency>
     <dependency>
       <groupId>org.apache.taglibs</groupId>
       <artifactId>taglibs-standard-impl</artifactId>
-      <version>1.2.3</version>
+      <version>1.2.5</version>
     </dependency>
     <dependency>
       <groupId>org.apache.taglibs</groupId>
       <artifactId>taglibs-standard-spec</artifactId>
-      <version>1.2.1</version>
+      <version>1.2.5</version>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>[4.13.1,)</version>
+      <version>4.13.2</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
-      <groupId>javax.mail</groupId>
-      <artifactId>javax.mail-api</artifactId>
-      <version>1.6.0</version>
+      <groupId>com.sun.mail</groupId>
+      <artifactId>javax.mail</artifactId>
+      <version>1.6.2</version>
     </dependency>
   </dependencies>
 

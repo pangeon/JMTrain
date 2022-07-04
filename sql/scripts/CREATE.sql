@@ -5,7 +5,7 @@ CREATE TABLE Profiles(
     ip INT(4) unsigned NOT NULL,
     token VARCHAR(45) UNIQUE,
     regstamp TIMESTAMP NOT NULL DEFAULT now(),
-    confstamp TIMESTAMP DEFAULT NULL,
+    confstamp TIMESTAMP NULL DEFAULT NULL,
     role ENUM('admin', 'trainer', 'attendee') NOT NULL,
     active INT(11) DEFAULT NULL,
     PRIMARY KEY (id)
@@ -26,7 +26,7 @@ CREATE TABLE Courses(
     id BIGINT unsigned NOT NULL AUTO_INCREMENT,
     title VARCHAR(60) NOT NULL,
     start_date TIMESTAMP NOT NULL,
-    end_date TIMESTAMP NOT NULL,
+    end_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     description TEXT,
     max_attende SMALLINT,
     PRIMARY KEY(id)
