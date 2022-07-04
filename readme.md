@@ -99,6 +99,9 @@ See more by reviewing the class code:
 * [EmailSender](src/main/java/san/jee/cecherz/util/EmailSender.java) 
 * [TokenProvider](src/main/java/san/jee/cecherz/util/TokenProvider.java)
 
+* Less secure apps & your Google Account [Google on May 2022 update security policy](https://support.google.com/accounts/answer/6010255?hl=en#zippy=%2Caktualizowanie-aplikacji-i-systemu-operacyjnego)
+  * Solution on Stack Overflow -> [here](https://stackoverflow.com/questions/26594097/javamail-exception-javax-mail-authenticationfailedexception-534-5-7-9-applicatio)
+
 ## Database structure
 ![database schema](readme-img/diagram_jmtraindb.PNG)
 
